@@ -47,29 +47,75 @@
 
 
 <div class="sticky top-0 z-50 w-full border-b border-border-light dark:border-border-dark bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
-<div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
-<span class="material-symbols-outlined text-xl">terminal</span>
+  <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+    
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+        <span class="material-symbols-outlined text-xl">terminal</span>
+      </div>
+      <h2 class="text-xl font-bold tracking-tight text-heading-light dark:text-heading-dark">AB.dev</h2>
+    </div>
+
+    <!-- Desktop nav & dark mode -->
+    <div class="hidden md:flex items-center gap-8">
+      <nav class="flex items-center gap-8 mr-2">
+        <a href="#expertise" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Expertise</a>
+        <a href="#work" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Work</a>
+        <a href="#certificates" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Certificates</a>
+        <a href="#contact" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Contact</a>
+      </nav>
+      <div class="flex items-center gap-4 border-l border-border-light dark:border-border-dark pl-6">
+        <button aria-label="Toggle dark mode" class="dark-toggle-btn p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark" onclick="document.documentElement.classList.toggle('dark')">
+          <span class="material-symbols-outlined moon-icon">dark_mode</span>
+          <span class="material-symbols-outlined sun-icon hidden">light_mode</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <div class="md:hidden flex items-center">
+      <button id="mobile-menu-btn" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-card-light dark:bg-card-dark border-t border-border-light dark:border-border-dark">
+    <nav class="flex flex-col p-4 gap-4">
+      <a href="#expertise" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Expertise</a>
+      <a href="#work" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Work</a>
+      <a href="#certificates" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Certificates</a>
+      <a href="#contact" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Contact</a>
+      <button aria-label="Toggle dark mode" class="dark-toggle-btn p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark mt-2" onclick="document.documentElement.classList.toggle('dark')">
+        <span class="material-symbols-outlined">dark_mode</span>
+        <span class="material-symbols-outlined hidden">light_mode</span>
+      </button>
+    </nav>
+  </div>
 </div>
-<h2 class="text-xl font-bold tracking-tight text-heading-light dark:text-heading-dark">AB.dev</h2>
-</div>
-<div class="hidden md:flex items-center gap-8">
-<nav class="flex items-center gap-8 mr-2">
-<a class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary" href="#expertise">Expertise</a>
-<a class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary" href="#work">Work</a>
-<a class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary" href="#certificates">Certificates</a>
-<a class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary" href="#contact">Contact</a>
-</nav>
-<div class="flex items-center gap-4 border-l border-border-light dark:border-border-dark pl-6">
-<button aria-label="Toggle dark mode" class="dark-toggle-btn p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark" onclick="document.documentElement.classList.toggle('dark')">
-<span class="material-symbols-outlined moon-icon">dark_mode</span>
-<span class="material-symbols-outlined sun-icon">light_mode</span>
-</button>
-</div>
-</div>
-</div>
-</div>
+
+<script>
+  // Toggle mobile menu
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Optional: toggle moon/sun icon
+  const darkBtns = document.querySelectorAll('.dark-toggle-btn');
+  darkBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const moon = btn.querySelector('.moon-icon');
+      const sun = btn.querySelector('.sun-icon');
+      moon.classList.toggle('hidden');
+      sun.classList.toggle('hidden');
+    });
+  });
+</script>
+
 <main class="max-w-[1200px] mx-auto px-6">
 <section class="py-20 md:py-32">
 <div class="flex flex-col md:flex-row items-center gap-12">
