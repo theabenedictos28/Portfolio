@@ -48,7 +48,7 @@
 
 <div class="sticky top-0 z-50 w-full border-b border-border-light dark:border-border-dark bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
   <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
-    
+
     <!-- Logo -->
     <div class="flex items-center gap-3">
       <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
@@ -66,32 +66,32 @@
         <a href="#contact" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Contact</a>
       </nav>
       <div class="flex items-center gap-4 border-l border-border-light dark:border-border-dark pl-6">
-        <button aria-label="Toggle dark mode" class="dark-toggle-btn p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark" onclick="document.documentElement.classList.toggle('dark')">
+        <button aria-label="Toggle dark mode" id="desktop-dark-btn" class="dark-toggle-btn p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark">
           <span class="material-symbols-outlined moon-icon">dark_mode</span>
           <span class="material-symbols-outlined sun-icon hidden">light_mode</span>
         </button>
       </div>
     </div>
 
-    <!-- Mobile hamburger -->
-    <div class="md:hidden flex items-center">
+    <!-- Mobile hamburger + dark mode -->
+    <div class="md:hidden flex items-center gap-4">
+      <button id="mobile-dark-btn" aria-label="Toggle dark mode" class="dark-toggle-btn p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark">
+        <span class="material-symbols-outlined moon-icon">dark_mode</span>
+        <span class="material-symbols-outlined sun-icon hidden">light_mode</span>
+      </button>
       <button id="mobile-menu-btn" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark">
         <span class="material-symbols-outlined">menu</span>
       </button>
     </div>
   </div>
 
-  <!-- Mobile menu -->
+  <!-- Mobile menu (no dark mode button here) -->
   <div id="mobile-menu" class="hidden md:hidden bg-card-light dark:bg-card-dark border-t border-border-light dark:border-border-dark">
     <nav class="flex flex-col p-4 gap-4">
       <a href="#expertise" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Expertise</a>
       <a href="#work" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Work</a>
       <a href="#certificates" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Certificates</a>
       <a href="#contact" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Contact</a>
-      <button aria-label="Toggle dark mode" class="dark-toggle-btn p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark mt-2" onclick="document.documentElement.classList.toggle('dark')">
-        <span class="material-symbols-outlined">dark_mode</span>
-        <span class="material-symbols-outlined hidden">light_mode</span>
-      </button>
     </nav>
   </div>
 </div>
@@ -104,12 +104,23 @@
     mobileMenu.classList.toggle('hidden');
   });
 
-  // Optional: toggle moon/sun icon
+  // Toggle dark mode icons on all buttons
   const darkBtns = document.querySelectorAll('.dark-toggle-btn');
   darkBtns.forEach(btn => {
+    const moon = btn.querySelector('.moon-icon');
+    const sun = btn.querySelector('.sun-icon');
+
+    // Initialize correct icon based on current theme
+    if(document.documentElement.classList.contains('dark')){
+      moon.classList.add('hidden');
+      sun.classList.remove('hidden');
+    } else {
+      moon.classList.remove('hidden');
+      sun.classList.add('hidden');
+    }
+
     btn.addEventListener('click', () => {
-      const moon = btn.querySelector('.moon-icon');
-      const sun = btn.querySelector('.sun-icon');
+      document.documentElement.classList.toggle('dark');
       moon.classList.toggle('hidden');
       sun.classList.toggle('hidden');
     });
