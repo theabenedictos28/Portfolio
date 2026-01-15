@@ -81,19 +81,20 @@
     </div>
   </div>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-card-light dark:bg-card-dark border-t border-border-light dark:border-border-dark">
-    <nav class="flex flex-col p-4 gap-4">
-      <a href="#expertise" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Expertise</a>
-      <a href="#work" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Work</a>
-      <a href="#certificates" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Certificates</a>
-      <a href="#contact" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Contact</a>
-      <button aria-label="Toggle dark mode" class="dark-toggle-btn p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark mt-2" onclick="document.documentElement.classList.toggle('dark')">
-        <span class="material-symbols-outlined">dark_mode</span>
-        <span class="material-symbols-outlined hidden">light_mode</span>
-      </button>
-    </nav>
-  </div>
+<!-- Mobile menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-card-light dark:bg-card-dark border-t border-border-light dark:border-border-dark">
+  <nav class="flex flex-col p-4 gap-4">
+    <a href="#expertise" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Expertise</a>
+    <a href="#work" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Work</a>
+    <a href="#certificates" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Certificates</a>
+    <a href="#contact" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Contact</a>
+
+    <!-- Mobile dark mode button -->
+    <button aria-label="Toggle dark mode" class="dark-toggle-btn p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark mt-2" onclick="document.documentElement.classList.toggle('dark')">
+      <span class="material-symbols-outlined moon-icon">dark_mode</span>
+      <span class="material-symbols-outlined sun-icon hidden">light_mode</span>
+    </button>
+  </nav>
 </div>
 
 <script>
@@ -104,17 +105,28 @@
     mobileMenu.classList.toggle('hidden');
   });
 
-  // Optional: toggle moon/sun icon
+  // Toggle dark mode icons on all buttons
   const darkBtns = document.querySelectorAll('.dark-toggle-btn');
   darkBtns.forEach(btn => {
+    const moon = btn.querySelector('.moon-icon');
+    const sun = btn.querySelector('.sun-icon');
+
+    // Initialize: show correct icon based on current mode
+    if(document.documentElement.classList.contains('dark')){
+      moon.classList.add('hidden');
+      sun.classList.remove('hidden');
+    } else {
+      moon.classList.remove('hidden');
+      sun.classList.add('hidden');
+    }
+
     btn.addEventListener('click', () => {
-      const moon = btn.querySelector('.moon-icon');
-      const sun = btn.querySelector('.sun-icon');
       moon.classList.toggle('hidden');
       sun.classList.toggle('hidden');
     });
   });
 </script>
+
 
 <main class="max-w-[1200px] mx-auto px-6">
 <section class="py-20 md:py-32">
