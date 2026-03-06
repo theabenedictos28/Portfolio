@@ -24,6 +24,8 @@
       --sans:       'DM Sans', system-ui, sans-serif;
       --mono:       'DM Mono', monospace;
       --tr:         background 0.25s, color 0.25s, border-color 0.25s;
+      --page-px:    40px;
+      --card-w:     280px;
     }
     [data-theme="dark"] {
       --bg:         #0a0a0a;
@@ -48,13 +50,14 @@
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
       transition: var(--tr);
+      overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
 
     .page {
       max-width: 920px;
       margin: 0 auto;
-      padding: 56px 40px 120px;
+      padding: 56px var(--page-px) 120px;
     }
 
     @keyframes fadeUp {
@@ -66,7 +69,9 @@
     .f3 { animation: fadeUp 0.5s ease 0.19s both; }
     .f4 { animation: fadeUp 0.5s ease 0.26s both; }
 
-    /* HERO */
+    /* ═══════════════════════════════════
+       HERO
+    ═══════════════════════════════════ */
     .hero {
       display: grid;
       grid-template-columns: 160px 1fr;
@@ -82,8 +87,8 @@
     }
     .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
     .hero-info { display: flex; flex-direction: column; gap: 0; padding-top: 4px; }
-    .hero-name-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
-    .hero-name { font-family: var(--serif); font-size: 32px; font-weight: 700; color: var(--text); line-height: 1.1; letter-spacing: -0.02em; }
+    .hero-name-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; gap: 12px; }
+    .hero-name { font-family: var(--serif); font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: var(--text); line-height: 1.1; letter-spacing: -0.02em; }
 
     .theme-btn {
       width: 36px; height: 36px; border-radius: 8px;
@@ -100,17 +105,18 @@
 
     .hero-loc { display: flex; align-items: center; gap: 5px; color: var(--muted); font-size: 12px; margin-bottom: 10px; }
     .hero-loc svg { width: 12px; height: 12px; fill: var(--muted); flex-shrink: 0; }
-    .hero-role { font-size: 16px; color: var(--text2); margin-bottom: 16px; font-weight: 400; }
+    .hero-role { font-size: clamp(13px, 3vw, 16px); color: var(--text2); margin-bottom: 16px; font-weight: 400; }
     .hero-role span { color: var(--text); }
     .hero-role .sep { color: var(--muted); margin: 0 4px; }
 
-    .cta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; gap: 7px;
       padding: 9px 18px; border-radius: 7px;
       font-family: var(--sans); font-size: 12px; font-weight: 500;
       cursor: pointer; transition: all 0.15s;
       border: 1px solid var(--border2); background: var(--bg2); color: var(--text);
+      white-space: nowrap;
     }
     .btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(37,99,235,0.05); }
     .btn-fill { background: var(--text); border-color: var(--text); color: var(--bg); font-weight: 600; }
@@ -119,17 +125,23 @@
     .btn-ghost:hover { color: var(--text); background: transparent; border: none; }
 
     .divider { height: 1px; background: var(--border); margin: 40px 0; }
-    .label { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 20px; font-family: var(--serif); letter-spacing: -0.01em; }
+    .label { font-size: clamp(16px, 4vw, 18px); font-weight: 700; color: var(--text); margin-bottom: 20px; font-family: var(--serif); letter-spacing: -0.01em; }
 
-    /* ABOUT */
+    /* ═══════════════════════════════════
+       ABOUT
+    ═══════════════════════════════════ */
     .about-text { color: var(--text2); font-size: 14px; line-height: 1.85; }
     .about-text p + p { margin-top: 14px; }
     .about-text strong { color: var(--text); font-weight: 600; }
 
+    /* ═══════════════════════════════════
+       TWO-COL
+    ═══════════════════════════════════ */
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-    @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; gap: 0; } }
 
-    /* TIMELINE */
+    /* ═══════════════════════════════════
+       TIMELINE
+    ═══════════════════════════════════ */
     .tl-list { display: flex; flex-direction: column; }
     .tl-item { display: flex; gap: 14px; position: relative; padding: 0 0 22px 0; }
     .tl-item:last-child { padding-bottom: 0; }
@@ -148,7 +160,9 @@
     .tl-title { color: var(--text); font-size: 12.5px; font-weight: 600; margin-bottom: 2px; line-height: 1.4; }
     .tl-sub { color: var(--muted); font-size: 11px; line-height: 1.5; }
 
-    /* STACK */
+    /* ═══════════════════════════════════
+       STACK
+    ═══════════════════════════════════ */
     .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; }
     .stack-group { margin-bottom: 18px; }
     .stack-gl { font-size: 11px; color: var(--muted); margin-bottom: 9px; font-weight: 500; letter-spacing: 0.04em; }
@@ -160,7 +174,9 @@
     }
     .tag:hover { border-color: var(--accent); color: var(--accent); background: rgba(37,99,235,0.05); }
 
-    /* PROJECTS */
+    /* ═══════════════════════════════════
+       PROJECTS
+    ═══════════════════════════════════ */
     .proj-item {
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 0; border-bottom: 1px solid var(--border);
@@ -183,10 +199,9 @@
     }
     .pl:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ══════════════════════════════════════════
-       HORIZONTAL FILMSTRIP GALLERY
-    ══════════════════════════════════════════ */
-
+    /* ═══════════════════════════════════
+       FILMSTRIP
+    ═══════════════════════════════════ */
     .filmstrip-section { position: relative; }
 
     .filmstrip-header {
@@ -194,12 +209,14 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 20px;
+      gap: 12px;
     }
 
     .filmstrip-controls {
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-shrink: 0;
     }
 
     .fs-counter {
@@ -229,14 +246,12 @@
     }
     .fs-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
-    /* Track wrapper — clips overflow */
     .filmstrip-viewport {
       overflow: hidden;
       border-radius: 12px;
       position: relative;
     }
 
-    /* Fade edges */
     .filmstrip-viewport::before,
     .filmstrip-viewport::after {
       content: '';
@@ -261,12 +276,13 @@
       padding: 4px 4px 12px;
       transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
       will-change: transform;
+      cursor: grab;
     }
+    .filmstrip-track.dragging { cursor: grabbing; }
 
-    /* Each card */
     .fs-card {
       flex-shrink: 0;
-      width: 280px;
+      width: var(--card-w);
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
@@ -287,7 +303,6 @@
       box-shadow: 0 8px 28px rgba(37,99,235,0.15);
     }
 
-    /* Image area */
     .fs-thumb {
       width: 100%;
       aspect-ratio: 16/10;
@@ -305,7 +320,6 @@
 
     .fs-card:hover .fs-thumb img { transform: scale(1.04); }
 
-    /* Overlay on hover */
     .fs-overlay {
       position: absolute; inset: 0;
       background: rgba(37,99,235,0);
@@ -327,7 +341,6 @@
     }
     .fs-card:hover .fs-expand-icon { opacity: 1; transform: scale(1); }
 
-    /* Placeholder when no image */
     .fs-placeholder {
       width: 100%; height: 100%;
       display: flex; flex-direction: column;
@@ -337,7 +350,6 @@
     .fs-placeholder svg { width: 28px; height: 28px; fill: currentColor; opacity: 0.4; }
     .fs-placeholder span { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
 
-    /* Card body */
     .fs-body {
       padding: 13px 15px;
       display: flex;
@@ -346,7 +358,6 @@
       gap: 8px;
     }
 
-    .fs-info {}
     .fs-num {
       font-family: var(--mono);
       font-size: 9px;
@@ -379,7 +390,6 @@
       margin-top: 2px;
     }
 
-    /* Scroll dots */
     .filmstrip-dots {
       display: flex;
       justify-content: center;
@@ -399,9 +409,9 @@
       width: 32px;
     }
 
-    /* ══════════════════════════════════════════
+    /* ═══════════════════════════════════
        LIGHTBOX
-    ══════════════════════════════════════════ */
+    ═══════════════════════════════════ */
     .lightbox {
       position: fixed; inset: 0; z-index: 9999;
       background: rgba(0,0,0,0.94);
@@ -411,6 +421,7 @@
       padding: 20px;
     }
     .lightbox.open { opacity: 1; pointer-events: all; }
+
     .lb-inner {
       position: relative; max-width: 960px; width: 100%;
       transform: scale(0.95) translateY(10px);
@@ -418,31 +429,30 @@
     }
     .lightbox.open .lb-inner { transform: scale(1) translateY(0); }
 
-    /* Top bar */
     .lb-topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 14px;
       padding: 0 2px;
+      gap: 10px;
     }
-    .lb-breadcrumb {
-      display: flex; align-items: center; gap: 8px;
-    }
+    .lb-breadcrumb { display: flex; align-items: center; gap: 8px; min-width: 0; }
     .lb-bc-num {
       font-family: var(--mono);
       font-size: 10px;
       color: rgba(255,255,255,0.35);
       letter-spacing: 0.08em;
+      white-space: nowrap;
     }
     .lb-bc-sep { color: rgba(255,255,255,0.2); font-size: 12px; }
-    .lb-bc-title { color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 600; }
+    .lb-bc-title { color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
     .lb-close {
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.12);
       color: rgba(255,255,255,0.7);
-      border-radius: 8px; width: 34px; height: 34px;
+      border-radius: 8px; width: 34px; height: 34px; min-width: 34px;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; font-size: 16px; transition: background 0.15s;
     }
@@ -470,7 +480,6 @@
       transform: rotate(-25deg); user-select: none; white-space: nowrap;
     }
 
-    /* Nav arrows */
     .lb-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
       background: rgba(255,255,255,0.08);
@@ -485,7 +494,6 @@
     .lb-prev { left: -56px; }
     .lb-next { right: -56px; }
 
-    /* Bottom strip — thumbnails */
     .lb-strip {
       display: flex;
       gap: 8px;
@@ -505,18 +513,10 @@
       cursor: pointer; transition: all 0.18s;
       background: #222;
     }
-    .lb-strip-thumb img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-    }
-    .lb-strip-thumb.active {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px var(--accent);
-    }
-    .lb-strip-thumb:hover:not(.active) {
-      border-color: rgba(255,255,255,0.3);
-    }
+    .lb-strip-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .lb-strip-thumb.active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    .lb-strip-thumb:hover:not(.active) { border-color: rgba(255,255,255,0.3); }
 
-    /* Strip placeholder */
     .lb-strip-placeholder {
       width: 100%; height: 100%;
       background: #1a1a1a;
@@ -525,40 +525,148 @@
       text-transform: uppercase; letter-spacing: 0.06em;
     }
 
-    /* CERTS */
+    /* ═══════════════════════════════════
+       CERTS
+    ═══════════════════════════════════ */
     .cert { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); }
     .cert:first-child { border-top: 1px solid var(--border); }
     .cert-name { color: var(--text); font-size: 13.5px; font-weight: 600; margin-bottom: 3px; }
     .cert-org { color: var(--muted); font-size: 11.5px; }
     .cert-date { color: var(--muted2); font-size: 11px; white-space: nowrap; }
 
-    /* CONTACT */
+    /* ═══════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════ */
     .cgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
     .citem { padding: 15px 18px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg2); transition: all 0.15s; display: block; }
     .citem:hover { border-color: var(--accent); background: rgba(37,99,235,0.04); }
     .clabel { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 5px; }
-    .cvalue { font-size: 12.5px; color: var(--text); font-weight: 600; }
+    .cvalue { font-size: 12.5px; color: var(--text); font-weight: 600; word-break: break-all; }
 
     .socials { display: flex; gap: 8px; flex-wrap: wrap; }
     .slink { display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px; border: 1px solid var(--border); border-radius: 7px; font-size: 11.5px; color: var(--muted); background: var(--bg2); transition: all 0.15s; font-weight: 500; }
     .slink:hover { border-color: var(--accent); color: var(--accent); }
-    .slink svg { width: 13px; height: 13px; fill: currentColor; }
+    .slink svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
 
     footer { margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; color: var(--muted2); font-size: 11px; flex-wrap: wrap; gap: 8px; }
 
-    /* Drag cursor on filmstrip */
-    .filmstrip-track { cursor: grab; }
-    .filmstrip-track.dragging { cursor: grabbing; }
+    /* ═══════════════════════════════════════════════════════
+       RESPONSIVE — Tablet: 700–900px
+    ═══════════════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      :root { --page-px: 28px; }
+      .lb-prev { left: -46px; }
+      .lb-next { right: -46px; }
+    }
 
+    /* ═══════════════════════════════════════════════════════
+       RESPONSIVE — Mobile: ≤700px
+    ═══════════════════════════════════════════════════════ */
     @media (max-width: 700px) {
-      .hero { grid-template-columns: 1fr; }
-      .avatar { width: 120px; aspect-ratio: 1; border-radius: 50%; }
-      .cgrid { grid-template-columns: 1fr; }
-      .page { padding: 40px 20px 80px; }
-      .lb-prev { left: -8px; }
-      .lb-next { right: -8px; }
-      .lb-nav { background: rgba(0,0,0,0.5); }
-      .fs-card { width: 240px; }
+      :root {
+        --page-px: 18px;
+        --card-w: 230px;
+      }
+      body { font-size: 13px; }
+
+      .page { padding: 32px var(--page-px) 80px; }
+      .divider { margin: 28px 0; }
+
+      /* Hero — stack vertically */
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      .hero-info {
+        width: 100%;
+        padding-top: 0;
+      }
+
+      .avatar {
+        width: 88px; height: 88px;
+        border-radius: 50%;
+      }
+
+      /* On mobile, show avatar + name-row side by side */
+      .hero {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hero-top-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+      }
+
+      .hero-name-row { margin-bottom: 8px; }
+      .hero-name { font-size: clamp(20px, 6vw, 26px); }
+      .hero-role { font-size: 13px; margin-bottom: 14px; }
+
+      .cta { gap: 8px; }
+      .btn { padding: 8px 14px; font-size: 11.5px; }
+      .btn-ghost { padding: 8px 4px; }
+
+      /* Two column → single column */
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      /* Projects */
+      .proj-name { font-size: 13px; }
+      .proj-desc { font-size: 11px; }
+      .plinks { display: none; } /* hide on mobile, row is still tappable */
+      .proj-item:hover { margin: 0 -8px; padding: 14px 8px; }
+
+      /* Filmstrip */
+      .filmstrip-viewport::before,
+      .filmstrip-viewport::after { width: 24px; }
+
+      .fs-card:hover { transform: none; } /* avoid jank on touch */
+
+      /* Lightbox */
+      .lightbox { padding: 12px; }
+      .lb-inner { max-width: 100%; }
+
+      .lb-img-wrap img { max-height: 60vh; }
+
+      .lb-prev { left: 4px; background: rgba(0,0,0,0.55); border-color: rgba(255,255,255,0.15); }
+      .lb-next { right: 4px; background: rgba(0,0,0,0.55); border-color: rgba(255,255,255,0.15); }
+      .lb-nav { width: 36px; height: 36px; font-size: 18px; border-radius: 8px; }
+
+      .lb-strip-thumb { width: 52px; height: 34px; }
+
+      /* Certs */
+      .cert { grid-template-columns: 1fr; gap: 4px; }
+      .cert-date { font-size: 10.5px; color: var(--muted); }
+
+      /* Contact grid */
+      .cgrid { grid-template-columns: 1fr; gap: 8px; }
+      .citem { padding: 13px 15px; }
+      .cvalue { font-size: 12px; word-break: break-all; }
+
+      /* Socials */
+      .socials { gap: 6px; }
+      .slink { font-size: 11px; padding: 6px 11px; }
+
+      /* Footer */
+      footer { flex-direction: column; align-items: flex-start; gap: 4px; }
+
+      .label { margin-bottom: 16px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       RESPONSIVE — Extra small: ≤400px
+    ═══════════════════════════════════════════════════════ */
+    @media (max-width: 400px) {
+      :root { --card-w: 200px; }
+      .hero-name { font-size: 20px; }
+      .btn { padding: 7px 11px; font-size: 11px; }
+      .btn svg { display: none; }
     }
   </style>
 </head>
@@ -566,7 +674,8 @@
 <div class="page">
 
   <!-- HERO -->
-  <div class="hero f1">
+  <div class="hero f1" id="heroSection">
+    <!-- Mobile rearranges this via JS below; desktop uses grid -->
     <div class="avatar">
       <img src="img/profile.jpg" alt="Althea Benedictos"
         onerror="this.src='https://ui-avatars.com/api/?name=Althea+Benedictos&background=2563eb&color=fff&size=400'"/>
@@ -584,7 +693,7 @@
         Plaridel, Bulacan, Philippines
       </p>
       <p class="hero-role">
-        <span>Web Developer</span><span class="sep"> \ </span><span>UI/UX Designer</span><span class="sep"></span>
+        <span>Web Developer</span><span class="sep"> \ </span><span>UI/UX Designer</span>
       </p>
       <div class="cta">
         <a class="btn btn-fill" href="mailto:altheabenedictos1@gmail.com">
@@ -784,9 +893,7 @@
 
   <div class="divider"></div>
 
-  <!-- ══════════════════════════════════════════
-       UI/UX DESIGNS — HORIZONTAL FILMSTRIP
-  ══════════════════════════════════════════ -->
+  <!-- UI/UX DESIGNS FILMSTRIP -->
   <section class="filmstrip-section">
     <div class="filmstrip-header">
       <p class="label" style="margin-bottom:0">UI/UX Designs</p>
@@ -800,16 +907,10 @@
     <div class="filmstrip-viewport" id="fsViewport">
       <div class="filmstrip-track" id="fsTrack">
 
-        <!-- Card 1: Eco Flask -->
         <div class="fs-card" onclick="openLb(0)" data-index="0">
           <div class="fs-thumb">
-            <img src="img/eco.png" alt="Eco Flask"
-              onerror="this.style.display='none'"/>
-            <div class="fs-overlay">
-              <div class="fs-expand-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-              </div>
-            </div>
+            <img src="img/eco.png" alt="Eco Flask" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
           </div>
           <div class="fs-body">
             <div class="fs-info">
@@ -821,16 +922,10 @@
           </div>
         </div>
 
-        <!-- Card 2: C8nnect About Page -->
         <div class="fs-card" onclick="openLb(1)" data-index="1">
           <div class="fs-thumb">
-            <img src="img/c8nnect.png" alt="C8nnect About Page"
-              onerror="this.style.display='none'"/>
-            <div class="fs-overlay">
-              <div class="fs-expand-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-              </div>
-            </div>
+            <img src="img/c8nnect.png" alt="C8nnect About Page" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
           </div>
           <div class="fs-body">
             <div class="fs-info">
@@ -842,16 +937,10 @@
           </div>
         </div>
 
-        <!-- Card 3: MyLGU -->
         <div class="fs-card" onclick="openLb(2)" data-index="2">
           <div class="fs-thumb">
-            <img src="img/mylgu.png" alt="MyLGU"
-              onerror="this.style.display='none'"/>
-            <div class="fs-overlay">
-              <div class="fs-expand-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-              </div>
-            </div>
+            <img src="img/mylgu.png" alt="MyLGU" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
           </div>
           <div class="fs-body">
             <div class="fs-info">
@@ -863,16 +952,10 @@
           </div>
         </div>
 
-        <!-- Card 4: Moodly -->
         <div class="fs-card" onclick="openLb(3)" data-index="3">
           <div class="fs-thumb">
-            <img src="img/moodly.png" alt="Moodly"
-              onerror="this.style.display='none'"/>
-            <div class="fs-overlay">
-              <div class="fs-expand-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-              </div>
-            </div>
+            <img src="img/moodly.png" alt="Moodly" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
           </div>
           <div class="fs-body">
             <div class="fs-info">
@@ -884,16 +967,10 @@
           </div>
         </div>
 
-        <!-- Card 5: HRIS -->
         <div class="fs-card" onclick="openLb(4)" data-index="4">
           <div class="fs-thumb">
-            <img src="img/hris.png" alt="HRIS"
-              onerror="this.style.display='none'"/>
-            <div class="fs-overlay">
-              <div class="fs-expand-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-              </div>
-            </div>
+            <img src="img/hris.png" alt="HRIS" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
           </div>
           <div class="fs-body">
             <div class="fs-info">
@@ -905,16 +982,10 @@
           </div>
         </div>
 
-        <!-- Card 6: LMS -->
         <div class="fs-card" onclick="openLb(5)" data-index="5">
           <div class="fs-thumb">
-            <img src="img/lms.png" alt="LMS"
-              onerror="this.style.display='none'"/>
-            <div class="fs-overlay">
-              <div class="fs-expand-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-              </div>
-            </div>
+            <img src="img/lms.png" alt="LMS" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
           </div>
           <div class="fs-body">
             <div class="fs-info">
@@ -926,16 +997,10 @@
           </div>
         </div>
 
-        <!-- Card 7: Construction System -->
         <div class="fs-card" onclick="openLb(6)" data-index="6">
           <div class="fs-thumb">
-            <img src="img/construction.png" alt="Construction System"
-              onerror="this.style.display='none'"/>
-            <div class="fs-overlay">
-              <div class="fs-expand-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-              </div>
-            </div>
+            <img src="img/construction.png" alt="Construction System" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
           </div>
           <div class="fs-body">
             <div class="fs-info">
@@ -950,16 +1015,12 @@
       </div><!-- /track -->
     </div><!-- /viewport -->
 
-    <!-- Scroll dots -->
     <div class="filmstrip-dots" id="fsDots"></div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       LIGHTBOX
-  ══════════════════════════════════════════ -->
+  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
     <div class="lb-inner">
-      <!-- Top bar -->
       <div class="lb-topbar">
         <div class="lb-breadcrumb">
           <span class="lb-bc-num" id="lbNum"></span>
@@ -969,17 +1030,14 @@
         <button class="lb-close" onclick="closeLb()" aria-label="Close">✕</button>
       </div>
 
-      <!-- Image -->
       <div class="lb-img-wrap">
         <img id="lbImg" src="" alt=""/>
         <div class="lb-watermark"><span>© Althea Benedictos</span></div>
       </div>
 
-      <!-- Nav arrows -->
       <button class="lb-nav lb-prev" onclick="lbStep(-1)" aria-label="Previous">‹</button>
       <button class="lb-nav lb-next" onclick="lbStep(1)" aria-label="Next">›</button>
 
-      <!-- Thumbnail strip -->
       <div class="lb-strip" id="lbStrip"></div>
     </div>
   </div>
@@ -1066,7 +1124,46 @@
     localStorage.setItem('theme', next);
   });
 
-  /* ── FILMSTRIP DATA ── */
+  /* ── MOBILE HERO: place avatar inline with name ── */
+  function rearrangeHero() {
+    var hero = document.getElementById('heroSection');
+    var avatar = hero.querySelector('.avatar');
+    var heroInfo = hero.querySelector('.hero-info');
+    var nameRow = heroInfo.querySelector('.hero-name-row');
+    var isMobile = window.innerWidth <= 700;
+
+    if (isMobile) {
+      hero.style.flexDirection = 'column';
+      // Wrap avatar + nameRow in a flex row if not already done
+      if (!document.getElementById('mobileTopRow')) {
+        var topRow = document.createElement('div');
+        topRow.id = 'mobileTopRow';
+        topRow.style.cssText = 'display:flex;align-items:center;gap:16px;width:100%';
+        // Move avatar into topRow
+        hero.insertBefore(topRow, heroInfo);
+        topRow.appendChild(avatar);
+        // Move nameRow into topRow
+        topRow.appendChild(nameRow);
+      }
+    } else {
+      // Restore desktop layout
+      var topRow = document.getElementById('mobileTopRow');
+      if (topRow) {
+        var nameRow = topRow.querySelector('.hero-name-row');
+        var avatar = topRow.querySelector('.avatar');
+        // Put avatar back as first child of hero
+        hero.insertBefore(avatar, hero.firstChild);
+        // Put nameRow back as first child of heroInfo
+        heroInfo.insertBefore(nameRow, heroInfo.firstChild);
+        topRow.remove();
+      }
+    }
+  }
+
+  rearrangeHero();
+  window.addEventListener('resize', rearrangeHero);
+
+  /* ── FILMSTRIP ── */
   var designs = [
     { src: 'img/eco.png',           title: 'Eco Flask',           sub: 'Product UI/UX' },
     { src: 'img/c8nnect.png',       title: 'C8nnect',             sub: 'Corporate About Page' },
@@ -1077,17 +1174,20 @@
     { src: 'img/construction.png',  title: 'Construction System', sub: 'Project Management UI' },
   ];
 
-  /* ── FILMSTRIP LOGIC ── */
-  var track      = document.getElementById('fsTrack');
-  var viewport   = document.getElementById('fsViewport');
-  var prevBtn    = document.getElementById('fsPrev');
-  var nextBtn    = document.getElementById('fsNext');
-  var counter    = document.getElementById('fsCounter');
-  var dotsWrap   = document.getElementById('fsDots');
+  var track    = document.getElementById('fsTrack');
+  var prevBtn  = document.getElementById('fsPrev');
+  var nextBtn  = document.getElementById('fsNext');
+  var counter  = document.getElementById('fsCounter');
+  var dotsWrap = document.getElementById('fsDots');
 
-  var CARD_W   = 280 + 14; // card width + gap
-  var current  = 0;
-  var total    = designs.length;
+  var current = 0;
+  var total   = designs.length;
+
+  function getCardW() {
+    var card = track.querySelector('.fs-card');
+    if (!card) return 294;
+    return card.offsetWidth + 14; // card + gap
+  }
 
   // Build dots
   for (var i = 0; i < total; i++) {
@@ -1100,9 +1200,7 @@
 
   function fsUpdateDots() {
     var dots = dotsWrap.querySelectorAll('.fs-dot');
-    dots.forEach(function(d, i) {
-      d.classList.toggle('active', i === current);
-    });
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
   }
 
   function fsUpdateButtons() {
@@ -1113,10 +1211,9 @@
 
   function fsGo(idx) {
     current = Math.max(0, Math.min(total - 1, idx));
-    track.style.transform = 'translateX(-' + (current * CARD_W) + 'px)';
+    track.style.transform = 'translateX(-' + (current * getCardW()) + 'px)';
     fsUpdateDots();
     fsUpdateButtons();
-    // highlight active card
     var cards = track.querySelectorAll('.fs-card');
     cards.forEach(function(c, i){ c.classList.toggle('active', i === current); });
   }
@@ -1125,18 +1222,18 @@
   nextBtn.addEventListener('click', function(){ fsGo(current + 1); });
   fsUpdateButtons();
 
-  // Drag / swipe on filmstrip
-  var dragStart = null, dragStartX = 0, dragDelta = 0;
+  // Recalc on resize
+  window.addEventListener('resize', function(){ fsGo(current); });
 
+  // Drag
+  var dragStart = null, dragStartX = 0;
   track.addEventListener('mousedown', function(e) {
-    dragStart = current;
-    dragStartX = e.clientX;
+    dragStart = current; dragStartX = e.clientX;
     track.classList.add('dragging');
   });
   window.addEventListener('mousemove', function(e) {
     if (dragStart === null) return;
-    dragDelta = e.clientX - dragStartX;
-    var offset = dragStart * CARD_W - dragDelta;
+    var offset = dragStart * getCardW() - (e.clientX - dragStartX);
     track.style.transition = 'none';
     track.style.transform = 'translateX(-' + offset + 'px)';
   });
@@ -1145,15 +1242,11 @@
     track.style.transition = '';
     track.classList.remove('dragging');
     var moved = dragStartX - e.clientX;
-    if (Math.abs(moved) > 60) {
-      fsGo(dragStart + (moved > 0 ? 1 : -1));
-    } else {
-      fsGo(dragStart);
-    }
+    fsGo(Math.abs(moved) > 60 ? dragStart + (moved > 0 ? 1 : -1) : dragStart);
     dragStart = null;
   });
 
-  // Touch swipe
+  // Touch
   var touchStartX = 0;
   track.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; }, { passive: true });
   track.addEventListener('touchend', function(e){
@@ -1161,7 +1254,7 @@
     if (Math.abs(diff) > 50) fsGo(current + (diff > 0 ? 1 : -1));
   }, { passive: true });
 
-  // Keyboard on filmstrip
+  // Keyboard
   document.addEventListener('keydown', function(e) {
     if (document.getElementById('lightbox').classList.contains('open')) return;
     if (e.key === 'ArrowLeft') fsGo(current - 1);
@@ -1189,14 +1282,12 @@
     var img = document.getElementById('lbImg');
     img.style.opacity = '0';
     setTimeout(function() {
-      img.src = d.src;
-      img.alt = d.title;
-      document.getElementById('lbNum').textContent = String(lbIdx + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+      img.src = d.src; img.alt = d.title;
+      document.getElementById('lbNum').textContent = String(lbIdx+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
       document.getElementById('lbTitleTop').textContent = d.title;
       img.style.opacity = '1';
     }, 100);
     buildLbStrip();
-    // scroll strip thumbnail into view
     setTimeout(function(){
       var strip = document.getElementById('lbStrip');
       var active = strip.querySelector('.lb-strip-thumb.active');
@@ -1208,9 +1299,8 @@
     lbIdx = i;
     var d = designs[i];
     var img = document.getElementById('lbImg');
-    img.src = d.src;
-    img.alt = d.title;
-    document.getElementById('lbNum').textContent = String(i + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+    img.src = d.src; img.alt = d.title;
+    document.getElementById('lbNum').textContent = String(i+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
     document.getElementById('lbTitleTop').textContent = d.title;
     buildLbStrip();
     document.getElementById('lightbox').classList.add('open');
@@ -1235,6 +1325,14 @@
     if (e.key === 'ArrowLeft') lbStep(-1);
     if (e.key === 'ArrowRight') lbStep(1);
   });
+
+  // Lightbox touch swipe
+  var lbTouchX = 0;
+  document.getElementById('lightbox').addEventListener('touchstart', function(e){ lbTouchX = e.touches[0].clientX; }, { passive: true });
+  document.getElementById('lightbox').addEventListener('touchend', function(e){
+    var diff = lbTouchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) lbStep(diff > 0 ? 1 : -1);
+  }, { passive: true });
 </script>
 </body>
 </html>
