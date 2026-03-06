@@ -51,14 +51,12 @@
     }
     a { color: inherit; text-decoration: none; }
 
-    /* PAGE */
     .page {
       max-width: 920px;
       margin: 0 auto;
       padding: 56px 40px 120px;
     }
 
-    /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -68,7 +66,7 @@
     .f3 { animation: fadeUp 0.5s ease 0.19s both; }
     .f4 { animation: fadeUp 0.5s ease 0.26s both; }
 
-    /* ── HERO — matches bryllim exactly ── */
+    /* HERO */
     .hero {
       display: grid;
       grid-template-columns: 160px 1fr;
@@ -76,59 +74,22 @@
       align-items: center;
       margin-bottom: 28px;
     }
-
-    /* Photo — same size as bryllim */
     .avatar {
-      width: 160px;
-      height: 160px;
-      border-radius: 10px;
-      overflow: hidden;
+      width: 160px; height: 160px;
+      border-radius: 10px; overflow: hidden;
       border: 1px solid var(--border);
-      background: var(--bg3);
-      flex-shrink: 0;
+      background: var(--bg3); flex-shrink: 0;
     }
-    .avatar img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: top center;
-      display: block;
-    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .hero-info { display: flex; flex-direction: column; gap: 0; padding-top: 4px; }
+    .hero-name-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .hero-name { font-family: var(--serif); font-size: 32px; font-weight: 700; color: var(--text); line-height: 1.1; letter-spacing: -0.02em; }
 
-    /* Right side info column */
-    .hero-info {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      padding-top: 4px;
-    }
-
-    /* Name row: name on left, toggle on far right */
-    .hero-name-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 6px;
-    }
-    .hero-name {
-      font-family: var(--serif);
-      font-size: 32px;
-      font-weight: 700;
-      font-style: normal;
-      color: var(--text);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-
-    /* Dark mode toggle */
     .theme-btn {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--bg2);
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.15s;
-      color: var(--muted);
-      flex-shrink: 0;
+      width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--bg2);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s; color: var(--muted); flex-shrink: 0;
     }
     .theme-btn:hover { border-color: var(--border2); color: var(--text); background: var(--bg3); }
     .theme-btn svg { width: 15px; height: 15px; fill: currentColor; }
@@ -137,174 +98,58 @@
     [data-theme="dark"] .icon-sun  { display: none; }
     [data-theme="dark"] .icon-moon { display: block; }
 
-    .hero-loc {
-      display: flex; align-items: center; gap: 5px;
-      color: var(--muted); font-size: 12px;
-      margin-bottom: 10px;
-    }
+    .hero-loc { display: flex; align-items: center; gap: 5px; color: var(--muted); font-size: 12px; margin-bottom: 10px; }
     .hero-loc svg { width: 12px; height: 12px; fill: var(--muted); flex-shrink: 0; }
-
-    .hero-role {
-      font-size: 16px;
-      color: var(--text2);
-      margin-bottom: 16px;
-      font-weight: 400;
-    }
+    .hero-role { font-size: 16px; color: var(--text2); margin-bottom: 16px; font-weight: 400; }
     .hero-role span { color: var(--text); }
     .hero-role .sep { color: var(--muted); margin: 0 4px; }
 
-    /* CTA buttons row — matches bryllim style */
-    .cta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    .cta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; gap: 7px;
-      padding: 9px 18px;
-      border-radius: 7px;
-      font-family: var(--sans);
-      font-size: 12px; font-weight: 500;
-      cursor: pointer;
-      transition: all 0.15s;
-      border: 1px solid var(--border2);
-      background: var(--bg2);
-      color: var(--text);
+      padding: 9px 18px; border-radius: 7px;
+      font-family: var(--sans); font-size: 12px; font-weight: 500;
+      cursor: pointer; transition: all 0.15s;
+      border: 1px solid var(--border2); background: var(--bg2); color: var(--text);
     }
     .btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(37,99,235,0.05); }
-    .btn-fill {
-      background: var(--text);
-      border-color: var(--text);
-      color: var(--bg);
-      font-weight: 600;
-    }
+    .btn-fill { background: var(--text); border-color: var(--text); color: var(--bg); font-weight: 600; }
     .btn-fill:hover { background: var(--text2); border-color: var(--text2); color: var(--bg); }
-    .btn-ghost {
-      background: transparent;
-      border: none;
-      color: var(--muted);
-      padding: 9px 4px;
-    }
+    .btn-ghost { background: transparent; border: none; color: var(--muted); padding: 9px 4px; }
     .btn-ghost:hover { color: var(--text); background: transparent; border: none; }
 
-    /* DIVIDER */
     .divider { height: 1px; background: var(--border); margin: 40px 0; }
+    .label { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 20px; font-family: var(--serif); letter-spacing: -0.01em; }
 
-    /* SECTION LABEL */
-    .label {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 20px;
-      font-family: var(--serif);
-      letter-spacing: -0.01em;
-    }
-
-    /* STATUS */
-    .status {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 11px; color: #15803d;
-      background: rgba(21,128,61,0.07);
-      border: 1px solid rgba(21,128,61,0.18);
-      border-radius: 20px;
-      padding: 4px 12px;
-      margin-bottom: 20px;
-    }
-    [data-theme="dark"] .status { color: #4ade80; background: rgba(74,222,128,0.08); border-color: rgba(74,222,128,0.2); }
-    .dot { width: 6px; height: 6px; border-radius: 50%; background: #15803d; animation: blink 2s infinite; }
-    [data-theme="dark"] .dot { background: #4ade80; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-    /* ABOUT — full width */
-    .about-section {
-      display: block;
-    }
+    /* ABOUT */
     .about-text { color: var(--text2); font-size: 14px; line-height: 1.85; }
     .about-text p + p { margin-top: 14px; }
     .about-text strong { color: var(--text); font-weight: 600; }
 
-    /* Freelancer card (right side of about, like bryllim's dev card) */
-    .freelancer-card {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--bg2);
-      padding: 24px;
-      font-size: 12px;
-    }
-    .card-icon {
-      font-size: 22px;
-      margin-bottom: 16px;
-      display: block;
-    }
-    .card-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; letter-spacing: 0.02em; }
-    .card-sub { color: var(--muted); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
-    .card-role-label { color: var(--muted); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
-    .card-role-value { color: var(--text); font-size: 13px; font-weight: 600; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; gap: 0; } }
 
-    /* TECH + EXPERIENCE two-column */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-    @media (max-width: 700px) {
-      .two-col { grid-template-columns: 1fr; gap: 0; }
-    }
-    /* TIMELINE — vertical dot + line */
+    /* TIMELINE */
     .tl-list { display: flex; flex-direction: column; }
-    .tl-item {
-      display: flex;
-      gap: 14px;
-      position: relative;
-      border: none;
-      padding: 0 0 22px 0;
-    }
+    .tl-item { display: flex; gap: 14px; position: relative; padding: 0 0 22px 0; }
     .tl-item:last-child { padding-bottom: 0; }
-    .tl-left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex-shrink: 0;
-      width: 14px;
-    }
+    .tl-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 14px; }
     .tl-dot-circle {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      border: 2px solid var(--border2);
-      background: var(--bg);
-      flex-shrink: 0;
-      margin-top: 3px;
-      z-index: 1;
+      width: 10px; height: 10px; border-radius: 50%;
+      border: 2px solid var(--border2); background: var(--bg);
+      flex-shrink: 0; margin-top: 3px; z-index: 1;
       transition: border-color 0.2s, background 0.2s;
     }
-    .tl-item:first-child .tl-dot-circle {
-      border-color: var(--accent);
-      background: var(--accent);
-    }
-    .tl-line {
-      width: 1px;
-      flex: 1;
-      background: var(--border);
-      margin-top: 5px;
-      min-height: 16px;
-    }
+    .tl-item:first-child .tl-dot-circle { border-color: var(--accent); background: var(--accent); }
+    .tl-line { width: 1px; flex: 1; background: var(--border); margin-top: 5px; min-height: 16px; }
     .tl-item:last-child .tl-line { display: none; }
     .tl-right { flex: 1; }
     .tl-year { color: var(--muted); font-size: 10.5px; font-weight: 500; margin-bottom: 3px; }
     .tl-title { color: var(--text); font-size: 12.5px; font-weight: 600; margin-bottom: 2px; line-height: 1.4; }
     .tl-sub { color: var(--muted); font-size: 11px; line-height: 1.5; }
-    .tl-dot { display: none; }
 
-    /* TECH STACK — with "View All" header like bryllim */
-    .section-header {
-      display: flex; align-items: baseline; justify-content: space-between;
-      margin-bottom: 20px;
-    }
-    .view-all { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 4px; transition: color 0.15s; }
-    .view-all:hover { color: var(--accent); }
-
+    /* STACK */
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; }
     .stack-group { margin-bottom: 18px; }
     .stack-gl { font-size: 11px; color: var(--muted); margin-bottom: 9px; font-weight: 500; letter-spacing: 0.04em; }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -317,8 +162,7 @@
 
     /* PROJECTS */
     .proj-item {
-      display: flex; align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 14px 0; border-bottom: 1px solid var(--border);
       gap: 12px; cursor: pointer; transition: all 0.15s;
     }
@@ -339,14 +183,347 @@
     }
     .pl:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* DESIGNS */
-    .designs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .dcard { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg2); transition: all 0.2s; display: block; }
-    .dcard:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.1); }
-    .dcard img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--bg3); }
-    .dcard-body { padding: 11px 13px; }
-    .dcard-title { font-size: 12.5px; color: var(--text); font-weight: 600; margin-bottom: 2px; }
-    .dcard-sub { font-size: 10.5px; color: var(--muted); }
+    /* ══════════════════════════════════════════
+       HORIZONTAL FILMSTRIP GALLERY
+    ══════════════════════════════════════════ */
+
+    .filmstrip-section { position: relative; }
+
+    .filmstrip-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .filmstrip-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .fs-counter {
+      font-size: 11px;
+      color: var(--muted);
+      font-family: var(--mono);
+      min-width: 36px;
+      text-align: center;
+    }
+
+    .fs-btn {
+      width: 32px; height: 32px;
+      border-radius: 7px;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      color: var(--muted);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s;
+      font-size: 15px;
+      user-select: none;
+    }
+    .fs-btn:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(37,99,235,0.06);
+    }
+    .fs-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    /* Track wrapper — clips overflow */
+    .filmstrip-viewport {
+      overflow: hidden;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    /* Fade edges */
+    .filmstrip-viewport::before,
+    .filmstrip-viewport::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 48px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .filmstrip-viewport::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg), transparent);
+    }
+    .filmstrip-viewport::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg), transparent);
+    }
+
+    .filmstrip-track {
+      display: flex;
+      gap: 14px;
+      padding: 4px 4px 12px;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+
+    /* Each card */
+    .fs-card {
+      flex-shrink: 0;
+      width: 280px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg2);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .fs-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(37,99,235,0.12);
+    }
+
+    .fs-card.active {
+      border-color: var(--accent);
+      box-shadow: 0 8px 28px rgba(37,99,235,0.15);
+    }
+
+    /* Image area */
+    .fs-thumb {
+      width: 100%;
+      aspect-ratio: 16/10;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg3);
+    }
+
+    .fs-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .fs-card:hover .fs-thumb img { transform: scale(1.04); }
+
+    /* Overlay on hover */
+    .fs-overlay {
+      position: absolute; inset: 0;
+      background: rgba(37,99,235,0);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.25s;
+    }
+    .fs-card:hover .fs-overlay { background: rgba(37,99,235,0.1); }
+
+    .fs-expand-icon {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.22s ease;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.95);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .fs-card:hover .fs-expand-icon { opacity: 1; transform: scale(1); }
+
+    /* Placeholder when no image */
+    .fs-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px; color: var(--muted2);
+    }
+    .fs-placeholder svg { width: 28px; height: 28px; fill: currentColor; opacity: 0.4; }
+    .fs-placeholder span { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
+
+    /* Card body */
+    .fs-body {
+      padding: 13px 15px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .fs-info {}
+    .fs-num {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--muted2);
+      margin-bottom: 3px;
+      letter-spacing: 0.08em;
+    }
+    .fs-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+      line-height: 1.3;
+    }
+    .fs-sub {
+      font-size: 10.5px;
+      color: var(--muted);
+    }
+
+    .fs-badge {
+      flex-shrink: 0;
+      font-size: 9.5px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(37,99,235,0.08);
+      color: var(--accent);
+      font-weight: 600;
+      border: 1px solid rgba(37,99,235,0.15);
+      letter-spacing: 0.03em;
+      margin-top: 2px;
+    }
+
+    /* Scroll dots */
+    .filmstrip-dots {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 16px;
+    }
+    .fs-dot {
+      height: 3px;
+      border-radius: 2px;
+      background: var(--border2);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      width: 20px;
+    }
+    .fs-dot.active {
+      background: var(--accent);
+      width: 32px;
+    }
+
+    /* ══════════════════════════════════════════
+       LIGHTBOX
+    ══════════════════════════════════════════ */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.94);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+      padding: 20px;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lb-inner {
+      position: relative; max-width: 960px; width: 100%;
+      transform: scale(0.95) translateY(10px);
+      transition: transform 0.25s ease;
+    }
+    .lightbox.open .lb-inner { transform: scale(1) translateY(0); }
+
+    /* Top bar */
+    .lb-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding: 0 2px;
+    }
+    .lb-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .lb-bc-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.08em;
+    }
+    .lb-bc-sep { color: rgba(255,255,255,0.2); font-size: 12px; }
+    .lb-bc-title { color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 600; }
+
+    .lb-close {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.7);
+      border-radius: 8px; width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 16px; transition: background 0.15s;
+    }
+    .lb-close:hover { background: rgba(255,255,255,0.16); color: #fff; }
+
+    .lb-img-wrap {
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #111; position: relative;
+    }
+    .lb-img-wrap img {
+      width: 100%; display: block;
+      max-height: 78vh; object-fit: contain;
+      transition: opacity 0.15s ease;
+    }
+
+    .lb-watermark {
+      position: absolute; inset: 0; pointer-events: none;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lb-watermark span {
+      font-size: 13px; font-weight: 600;
+      color: rgba(255,255,255,0.12);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      transform: rotate(-25deg); user-select: none; white-space: nowrap;
+    }
+
+    /* Nav arrows */
+    .lb-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.8); border-radius: 10px;
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 20px; transition: background 0.15s;
+      user-select: none;
+    }
+    .lb-nav:hover { background: rgba(255,255,255,0.18); color: #fff; }
+    .lb-prev { left: -56px; }
+    .lb-next { right: -56px; }
+
+    /* Bottom strip — thumbnails */
+    .lb-strip {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      justify-content: center;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+    .lb-strip::-webkit-scrollbar { display: none; }
+
+    .lb-strip-thumb {
+      flex-shrink: 0;
+      width: 68px; height: 42px;
+      border-radius: 6px; overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.1);
+      cursor: pointer; transition: all 0.18s;
+      background: #222;
+    }
+    .lb-strip-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .lb-strip-thumb.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+    .lb-strip-thumb:hover:not(.active) {
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    /* Strip placeholder */
+    .lb-strip-placeholder {
+      width: 100%; height: 100%;
+      background: #1a1a1a;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.15); font-size: 9px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
 
     /* CERTS */
     .cert { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); }
@@ -362,44 +539,39 @@
     .clabel { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 5px; }
     .cvalue { font-size: 12.5px; color: var(--text); font-weight: 600; }
 
-    /* SOCIALS */
     .socials { display: flex; gap: 8px; flex-wrap: wrap; }
     .slink { display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px; border: 1px solid var(--border); border-radius: 7px; font-size: 11.5px; color: var(--muted); background: var(--bg2); transition: all 0.15s; font-weight: 500; }
     .slink:hover { border-color: var(--accent); color: var(--accent); }
     .slink svg { width: 13px; height: 13px; fill: currentColor; }
 
-    /* FOOTER */
     footer { margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; color: var(--muted2); font-size: 11px; flex-wrap: wrap; gap: 8px; }
 
-    /* RESPONSIVE */
+    /* Drag cursor on filmstrip */
+    .filmstrip-track { cursor: grab; }
+    .filmstrip-track.dragging { cursor: grabbing; }
+
     @media (max-width: 700px) {
       .hero { grid-template-columns: 1fr; }
       .avatar { width: 120px; aspect-ratio: 1; border-radius: 50%; }
-      .about-section { grid-template-columns: 1fr; }
       .cgrid { grid-template-columns: 1fr; }
-      .designs { grid-template-columns: 1fr; }
-      .tl-item { grid-template-columns: 80px 1fr; }
-      .proj-desc { display: none; }
       .page { padding: 40px 20px 80px; }
+      .lb-prev { left: -8px; }
+      .lb-next { right: -8px; }
+      .lb-nav { background: rgba(0,0,0,0.5); }
+      .fs-card { width: 240px; }
     }
   </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- ── HERO ── -->
+  <!-- HERO -->
   <div class="hero f1">
-
-    <!-- Big photo left -->
     <div class="avatar">
       <img src="img/profile.jpg" alt="Althea Benedictos"
         onerror="this.src='https://ui-avatars.com/api/?name=Althea+Benedictos&background=2563eb&color=fff&size=400'"/>
     </div>
-
-    <!-- Info right -->
     <div class="hero-info">
-
-      <!-- Name row with toggle on far right -->
       <div class="hero-name-row">
         <h1 class="hero-name">Althea Benedictos</h1>
         <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
@@ -407,21 +579,15 @@
           <svg class="icon-moon" viewBox="0 0 24 24"><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></svg>
         </button>
       </div>
-
-      <!-- Location -->
       <p class="hero-loc">
         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         Plaridel, Bulacan, Philippines
       </p>
-
-      <!-- Role line -->
       <p class="hero-role">
         <span>Web Developer</span><span class="sep"> \ </span><span>UI/UX Designer</span><span class="sep"> \ </span><span>Freelancer</span>
       </p>
-
-      <!-- CTA buttons -->
       <div class="cta">
-        <a class="btn btn-fill" href="/cdn-cgi/l/email-protection#1b7a776f737e7a797e757e7f72786f74682a5b7c767a727735787476">
+        <a class="btn btn-fill" href="mailto:altheabenedictos1@gmail.com">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           Send Email
         </a>
@@ -429,36 +595,27 @@
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
           Download CV
         </a>
-        <a class="btn btn-ghost" href="#work">
-          View Work →
-        </a>
+        <a class="btn btn-ghost" href="#work">View Work →</a>
       </div>
-
     </div>
   </div>
 
   <div class="divider f2"></div>
 
-  <!-- ── ABOUT (two-col like bryllim) ── -->
+  <!-- ABOUT -->
   <section class="f3">
-    <div class="about-section">
-      <div>
-        <p class="label">About</p>
-        <div class="about-text">
-          <p>I'm a web developer and UI/UX designer who bridges the gap between design and code — building products that look great <strong>and</strong> work seamlessly.</p>
-          <p>I work with <strong>React, TypeScript, Tailwind CSS</strong> on the frontend, and <strong>Node.js</strong> with <strong>PostgreSQL</strong> on the backend, and design pixel-perfect interfaces in <strong>Figma</strong> and <strong>Canva</strong>. My projects range from e-commerce platforms to mobile apps and government service portals.</p>
-          <p>Currently freelancing and always open to exciting projects. Based in Bulacan, Philippines 🇵🇭</p>
-        </div>
-      </div>
+    <p class="label">About</p>
+    <div class="about-text">
+      <p>I'm a web developer and UI/UX designer who bridges the gap between design and code — building products that look great <strong>and</strong> work seamlessly.</p>
+      <p>I work with <strong>React, TypeScript, Tailwind CSS</strong> on the frontend, and <strong>PHP</strong> with <strong>PostgreSQL</strong> on the backend, and design pixel-perfect interfaces in <strong>Figma</strong> and <strong>Canva</strong>. My projects range from e-commerce platforms to mobile apps and government service portals.</p>
+      <p>Currently freelancing and always open to exciting projects. Based in Bulacan, Philippines 🇵🇭</p>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- ── TECH STACK + EXPERIENCE side by side ── -->
+  <!-- TECH STACK + EXPERIENCE -->
   <div class="two-col">
-
-    <!-- Tech Stack -->
     <section class="f4">
       <div class="section-header">
         <p class="label">Tech Stack</p>
@@ -466,45 +623,32 @@
       <div class="stack-group">
         <div class="stack-gl">Frontend</div>
         <div class="tags">
-          <span class="tag">JavaScript</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">React</span>
-          <span class="tag">Tailwind CSS</span>
-          <span class="tag">Vite</span>
+          <span class="tag">JavaScript</span><span class="tag">TypeScript</span>
+          <span class="tag">React</span><span class="tag">Tailwind CSS</span><span class="tag">Vite</span>
         </div>
       </div>
       <div class="stack-group">
         <div class="stack-gl">Backend</div>
         <div class="tags">
-          <span class="tag">Node.js</span>
-          <span class="tag">PHP</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">MySQL</span>
+          <span class="tag">PHP</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span>
         </div>
       </div>
       <div class="stack-group">
         <div class="stack-gl">Mobile</div>
-        <div class="tags">
-          <span class="tag">C#</span>
-          <span class="tag">.NET</span>
-        </div>
+        <div class="tags"><span class="tag">C#</span><span class="tag">.NET</span></div>
       </div>
       <div class="stack-group">
         <div class="stack-gl">Design</div>
         <div class="tags">
-          <span class="tag">Figma</span>
-          <span class="tag">Canva</span>
-          <span class="tag">Design Systems</span>
-          <span class="tag">Prototyping</span>
+          <span class="tag">Figma</span><span class="tag">Canva</span>
+          <span class="tag">Design Systems</span><span class="tag">Prototyping</span>
         </div>
       </div>
     </section>
 
-    <!-- Experience -->
     <section>
       <p class="label">Experience</p>
       <div class="tl-list">
-
         <div class="tl-item">
           <div class="tl-left"><div class="tl-dot-circle"></div><div class="tl-line"></div></div>
           <div class="tl-right">
@@ -513,7 +657,6 @@
             <div class="tl-sub">Self-employed · Delivering modern websites &amp; UI designs</div>
           </div>
         </div>
-
         <div class="tl-item">
           <div class="tl-left"><div class="tl-dot-circle"></div><div class="tl-line"></div></div>
           <div class="tl-right">
@@ -522,7 +665,6 @@
             <div class="tl-sub">Felta Techvoc Academy Inc. · Quezon City</div>
           </div>
         </div>
-
         <div class="tl-item">
           <div class="tl-left"><div class="tl-dot-circle"></div><div class="tl-line"></div></div>
           <div class="tl-right">
@@ -531,7 +673,6 @@
             <div class="tl-sub">Computer System Servicing · Guiguinto, Bulacan</div>
           </div>
         </div>
-
         <div class="tl-item">
           <div class="tl-left"><div class="tl-dot-circle"></div><div class="tl-line"></div></div>
           <div class="tl-right">
@@ -540,18 +681,15 @@
             <div class="tl-sub">Wrote my first line of code</div>
           </div>
         </div>
-
       </div>
     </section>
-
   </div>
 
   <div class="divider"></div>
 
-  <!-- ── PROJECTS ── -->
+  <!-- PROJECTS -->
   <section id="work">
     <p class="label">Recent Projects</p>
-
     <div class="proj-item" onclick="window.open('https://likhaph.vercel.app/','_blank')">
       <div class="proj-left">
         <div class="proj-name">LikhaPH — E-Commerce Platform</div>
@@ -565,7 +703,6 @@
         <span class="arrow">→</span>
       </div>
     </div>
-
     <div class="proj-item" onclick="window.open('https://tastyhub.free.nf/','_blank')">
       <div class="proj-left">
         <div class="proj-name">Tasty Hub — Recipe Sharing Website</div>
@@ -579,7 +716,6 @@
         <span class="arrow">→</span>
       </div>
     </div>
-
     <div class="proj-item" onclick="window.open('https://flippix.ct.ws','_blank')">
       <div class="proj-left">
         <div class="proj-name">Flippix — Flashcard Reviewer</div>
@@ -593,7 +729,6 @@
         <span class="arrow">→</span>
       </div>
     </div>
-
     <div class="proj-item" onclick="window.open('https://mylgu.vercel.app/','_blank')">
       <div class="proj-left">
         <div class="proj-name">MyLGU — Government Service Portal</div>
@@ -607,7 +742,6 @@
         <span class="arrow">→</span>
       </div>
     </div>
-
     <div class="proj-item" onclick="window.open('https://bottle.wholeecoph.com/home','_blank')">
       <div class="proj-left">
         <div class="proj-name">ECO Flask — Product Website</div>
@@ -621,7 +755,6 @@
         <span class="arrow">→</span>
       </div>
     </div>
-
     <div class="proj-item" onclick="window.open('https://kopishop.ct.ws/','_blank')">
       <div class="proj-left">
         <div class="proj-name">Kopi — Coffee Shop Website</div>
@@ -635,7 +768,6 @@
         <span class="arrow">→</span>
       </div>
     </div>
-
     <div class="proj-item">
       <div class="proj-left">
         <div class="proj-name">Moodly — Mood Tracker App</div>
@@ -652,32 +784,209 @@
 
   <div class="divider"></div>
 
-  <!-- ── DESIGNS ── -->
-  <section>
-    <p class="label">UI/UX Designs</p>
-    <div class="designs">
-      <a class="dcard" href="https://www.figma.com/design/rh0rACTODKs9uV4LMhT6BG/Eco-Flask?m=auto&t=CfkpN3orVoiINdVq-6" target="_blank">
-        <img src="img/eco.png" alt="Eco Flask"/>
-        <div class="dcard-body"><div class="dcard-title">Eco Flask</div><div class="dcard-sub">Figma · Product UI/UX</div></div>
-      </a>
-      <a class="dcard" href="https://www.figma.com/design/3bdvgPmz18BLKbidxInxuE/C8nnect?m=auto&t=CfkpN3orVoiINdVq-6" target="_blank">
-        <img src="img/c8nnect.png" alt="C8nnect"/>
-        <div class="dcard-body"><div class="dcard-title">C8nnect</div><div class="dcard-sub">Figma · Corporate Website UI</div></div>
-      </a>
-      <a class="dcard" href="https://www.figma.com/design/Y1uONA5r8NpXypqmDrUmmw/MyLGU?m=auto&t=bXkpVdmeXHYhTwQd-6" target="_blank">
-        <img src="img/mylgu.png" alt="MyLGU"/>
-        <div class="dcard-body"><div class="dcard-title">MyLGU</div><div class="dcard-sub">Figma · Mobile &amp; Web Platform</div></div>
-      </a>
-      <a class="dcard" href="https://www.figma.com/design/ogKBc0OdGvQN5wLYyREQ4b/Moodly?m=auto&t=bXkpVdmeXHYhTwQd-6" target="_blank">
-        <img src="img/moodly.png" alt="Moodly"/>
-        <div class="dcard-body"><div class="dcard-title">Moodly</div><div class="dcard-sub">Figma · Mood Tracker App UI</div></div>
-      </a>
+  <!-- ══════════════════════════════════════════
+       UI/UX DESIGNS — HORIZONTAL FILMSTRIP
+  ══════════════════════════════════════════ -->
+  <section class="filmstrip-section">
+    <div class="filmstrip-header">
+      <p class="label" style="margin-bottom:0">UI/UX Designs</p>
+      <div class="filmstrip-controls">
+        <span class="fs-counter" id="fsCounter">1 / 7</span>
+        <button class="fs-btn" id="fsPrev" aria-label="Previous" disabled>‹</button>
+        <button class="fs-btn" id="fsNext" aria-label="Next">›</button>
+      </div>
     </div>
+
+    <div class="filmstrip-viewport" id="fsViewport">
+      <div class="filmstrip-track" id="fsTrack">
+
+        <!-- Card 1: Eco Flask -->
+        <div class="fs-card" onclick="openLb(0)" data-index="0">
+          <div class="fs-thumb">
+            <img src="img/eco.png" alt="Eco Flask"
+              onerror="this.style.display='none'"/>
+            <div class="fs-overlay">
+              <div class="fs-expand-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">01 / 07</div>
+              <div class="fs-title">Eco Flask</div>
+              <div class="fs-sub">Product UI/UX</div>
+            </div>
+            <span class="fs-badge">Figma</span>
+          </div>
+        </div>
+
+        <!-- Card 2: C8nnect About Page -->
+        <div class="fs-card" onclick="openLb(1)" data-index="1">
+          <div class="fs-thumb">
+            <img src="img/c8nnect.png" alt="C8nnect About Page"
+              onerror="this.style.display='none'"/>
+            <div class="fs-overlay">
+              <div class="fs-expand-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">02 / 07</div>
+              <div class="fs-title">C8nnect</div>
+              <div class="fs-sub">Corporate About Page</div>
+            </div>
+            <span class="fs-badge">Figma</span>
+          </div>
+        </div>
+
+        <!-- Card 3: MyLGU -->
+        <div class="fs-card" onclick="openLb(2)" data-index="2">
+          <div class="fs-thumb">
+            <img src="img/mylgu.png" alt="MyLGU"
+              onerror="this.style.display='none'"/>
+            <div class="fs-overlay">
+              <div class="fs-expand-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">03 / 07</div>
+              <div class="fs-title">MyLGU</div>
+              <div class="fs-sub">Mobile &amp; Web Platform</div>
+            </div>
+            <span class="fs-badge">Figma</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Moodly -->
+        <div class="fs-card" onclick="openLb(3)" data-index="3">
+          <div class="fs-thumb">
+            <img src="img/moodly.png" alt="Moodly"
+              onerror="this.style.display='none'"/>
+            <div class="fs-overlay">
+              <div class="fs-expand-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">04 / 07</div>
+              <div class="fs-title">Moodly</div>
+              <div class="fs-sub">Mood Tracker App UI</div>
+            </div>
+            <span class="fs-badge">Figma</span>
+          </div>
+        </div>
+
+        <!-- Card 5: HRIS -->
+        <div class="fs-card" onclick="openLb(4)" data-index="4">
+          <div class="fs-thumb">
+            <img src="img/hris.png" alt="HRIS"
+              onerror="this.style.display='none'"/>
+            <div class="fs-overlay">
+              <div class="fs-expand-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">05 / 07</div>
+              <div class="fs-title">HRIS</div>
+              <div class="fs-sub">HR Information System</div>
+            </div>
+            <span class="fs-badge">Figma</span>
+          </div>
+        </div>
+
+        <!-- Card 6: LMS -->
+        <div class="fs-card" onclick="openLb(5)" data-index="5">
+          <div class="fs-thumb">
+            <img src="img/lms.png" alt="LMS"
+              onerror="this.style.display='none'"/>
+            <div class="fs-overlay">
+              <div class="fs-expand-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">06 / 07</div>
+              <div class="fs-title">LMS</div>
+              <div class="fs-sub">Learning Management System</div>
+            </div>
+            <span class="fs-badge">Figma</span>
+          </div>
+        </div>
+
+        <!-- Card 7: Construction System -->
+        <div class="fs-card" onclick="openLb(6)" data-index="6">
+          <div class="fs-thumb">
+            <img src="img/construction.png" alt="Construction System"
+              onerror="this.style.display='none'"/>
+            <div class="fs-overlay">
+              <div class="fs-expand-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">07 / 07</div>
+              <div class="fs-title">Construction System</div>
+              <div class="fs-sub">Project Management UI</div>
+            </div>
+            <span class="fs-badge">Figma</span>
+          </div>
+        </div>
+
+      </div><!-- /track -->
+    </div><!-- /viewport -->
+
+    <!-- Scroll dots -->
+    <div class="filmstrip-dots" id="fsDots"></div>
   </section>
+
+  <!-- ══════════════════════════════════════════
+       LIGHTBOX
+  ══════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <div class="lb-inner">
+      <!-- Top bar -->
+      <div class="lb-topbar">
+        <div class="lb-breadcrumb">
+          <span class="lb-bc-num" id="lbNum"></span>
+          <span class="lb-bc-sep">/</span>
+          <span class="lb-bc-title" id="lbTitleTop"></span>
+        </div>
+        <button class="lb-close" onclick="closeLb()" aria-label="Close">✕</button>
+      </div>
+
+      <!-- Image -->
+      <div class="lb-img-wrap">
+        <img id="lbImg" src="" alt=""/>
+        <div class="lb-watermark"><span>© Althea Benedictos</span></div>
+      </div>
+
+      <!-- Nav arrows -->
+      <button class="lb-nav lb-prev" onclick="lbStep(-1)" aria-label="Previous">‹</button>
+      <button class="lb-nav lb-next" onclick="lbStep(1)" aria-label="Next">›</button>
+
+      <!-- Thumbnail strip -->
+      <div class="lb-strip" id="lbStrip"></div>
+    </div>
+  </div>
 
   <div class="divider"></div>
 
-  <!-- ── CERTIFICATIONS ── -->
+  <!-- CERTIFICATIONS -->
   <section>
     <p class="label">Certifications &amp; Training</p>
     <div class="cert">
@@ -698,13 +1007,13 @@
 
   <div class="divider"></div>
 
-  <!-- ── CONTACT ── -->
+  <!-- CONTACT -->
   <section>
     <p class="label">Get in Touch</p>
     <div class="cgrid">
-      <a class="citem" href="/cdn-cgi/l/email-protection#ed8c819985888c8f88838889848e99829edcad8a808c8481c38e8280">
+      <a class="citem" href="mailto:altheabenedictos1@gmail.com">
         <div class="clabel">Email</div>
-        <div class="cvalue"><span class="__cf_email__" data-cfemail="8cede0f8e4e9edeee9e2e9e8e5eff8e3ffbdccebe1ede5e0a2efe3e1">[email&#160;protected]</span></div>
+        <div class="cvalue">altheabenedictos1@gmail.com</div>
       </a>
       <a class="citem" href="tel:+639352558376">
         <div class="clabel">Phone</div>
@@ -719,7 +1028,6 @@
         <div class="cvalue">Download CV ↓</div>
       </a>
     </div>
-
     <div class="socials">
       <a class="slink" href="https://github.com/theabenedictos28" target="_blank">
         <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
@@ -733,7 +1041,7 @@
         <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         Twitter / X
       </a>
-      <a class="slink" href="https://www.instagram.com/theabenedictos/" target="_blank">
+      <a class="slink" href="https://www.instagram.com/theasksksh/" target="_blank">
         <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         Instagram
       </a>
@@ -742,26 +1050,190 @@
 
   <footer>
     <span>© 2025 Althea Benedictos. All rights reserved.</span>
-    <span style="color:var(--muted2)">AB.dev</span>
   </footer>
 
-</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+</div><!-- /page -->
 
 <script>
+  /* ── THEME ── */
   (function() {
     var saved = localStorage.getItem('theme');
     if (saved) document.documentElement.setAttribute('data-theme', saved);
   })();
-</script>
-<script>
-  var btn = document.getElementById('themeBtn');
-  btn.addEventListener('click', function() {
-    var current = document.documentElement.getAttribute('data-theme');
-    var next = current === 'dark' ? 'light' : 'dark';
+  document.getElementById('themeBtn').addEventListener('click', function() {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
+  });
+
+  /* ── FILMSTRIP DATA ── */
+  var designs = [
+    { src: 'img/eco.png',           title: 'Eco Flask',           sub: 'Product UI/UX' },
+    { src: 'img/c8nnect.png',       title: 'C8nnect',             sub: 'Corporate About Page' },
+    { src: 'img/mylgu.png',         title: 'MyLGU',               sub: 'Mobile & Web Platform' },
+    { src: 'img/moodly.png',        title: 'Moodly',              sub: 'Mood Tracker App UI' },
+    { src: 'img/hris.png',          title: 'HRIS',                sub: 'HR Information System' },
+    { src: 'img/lms.png',           title: 'LMS',                 sub: 'Learning Management System' },
+    { src: 'img/construction.png',  title: 'Construction System', sub: 'Project Management UI' },
+  ];
+
+  /* ── FILMSTRIP LOGIC ── */
+  var track      = document.getElementById('fsTrack');
+  var viewport   = document.getElementById('fsViewport');
+  var prevBtn    = document.getElementById('fsPrev');
+  var nextBtn    = document.getElementById('fsNext');
+  var counter    = document.getElementById('fsCounter');
+  var dotsWrap   = document.getElementById('fsDots');
+
+  var CARD_W   = 280 + 14; // card width + gap
+  var current  = 0;
+  var total    = designs.length;
+
+  // Build dots
+  for (var i = 0; i < total; i++) {
+    var dot = document.createElement('div');
+    dot.className = 'fs-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('data-i', i);
+    dot.addEventListener('click', (function(idx){ return function(){ fsGo(idx); }; })(i));
+    dotsWrap.appendChild(dot);
+  }
+
+  function fsUpdateDots() {
+    var dots = dotsWrap.querySelectorAll('.fs-dot');
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function fsUpdateButtons() {
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+    counter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  function fsGo(idx) {
+    current = Math.max(0, Math.min(total - 1, idx));
+    track.style.transform = 'translateX(-' + (current * CARD_W) + 'px)';
+    fsUpdateDots();
+    fsUpdateButtons();
+    // highlight active card
+    var cards = track.querySelectorAll('.fs-card');
+    cards.forEach(function(c, i){ c.classList.toggle('active', i === current); });
+  }
+
+  prevBtn.addEventListener('click', function(){ fsGo(current - 1); });
+  nextBtn.addEventListener('click', function(){ fsGo(current + 1); });
+  fsUpdateButtons();
+
+  // Drag / swipe on filmstrip
+  var dragStart = null, dragStartX = 0, dragDelta = 0;
+
+  track.addEventListener('mousedown', function(e) {
+    dragStart = current;
+    dragStartX = e.clientX;
+    track.classList.add('dragging');
+  });
+  window.addEventListener('mousemove', function(e) {
+    if (dragStart === null) return;
+    dragDelta = e.clientX - dragStartX;
+    var offset = dragStart * CARD_W - dragDelta;
+    track.style.transition = 'none';
+    track.style.transform = 'translateX(-' + offset + 'px)';
+  });
+  window.addEventListener('mouseup', function(e) {
+    if (dragStart === null) return;
+    track.style.transition = '';
+    track.classList.remove('dragging');
+    var moved = dragStartX - e.clientX;
+    if (Math.abs(moved) > 60) {
+      fsGo(dragStart + (moved > 0 ? 1 : -1));
+    } else {
+      fsGo(dragStart);
+    }
+    dragStart = null;
+  });
+
+  // Touch swipe
+  var touchStartX = 0;
+  track.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', function(e){
+    var diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) fsGo(current + (diff > 0 ? 1 : -1));
+  }, { passive: true });
+
+  // Keyboard on filmstrip
+  document.addEventListener('keydown', function(e) {
+    if (document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') fsGo(current - 1);
+    if (e.key === 'ArrowRight') fsGo(current + 1);
+  });
+
+  /* ── LIGHTBOX ── */
+  var lbIdx = 0;
+
+  function buildLbStrip() {
+    var strip = document.getElementById('lbStrip');
+    strip.innerHTML = '';
+    designs.forEach(function(d, i) {
+      var thumb = document.createElement('div');
+      thumb.className = 'lb-strip-thumb' + (i === lbIdx ? ' active' : '');
+      thumb.innerHTML = '<img src="' + d.src + '" alt="' + d.title + '" onerror="this.parentElement.innerHTML=\'<div class=lb-strip-placeholder>' + (i+1) + '</div>\'">';
+      thumb.addEventListener('click', function(){ lbGo(i); });
+      strip.appendChild(thumb);
+    });
+  }
+
+  function lbGo(i) {
+    lbIdx = (i + total) % total;
+    var d = designs[lbIdx];
+    var img = document.getElementById('lbImg');
+    img.style.opacity = '0';
+    setTimeout(function() {
+      img.src = d.src;
+      img.alt = d.title;
+      document.getElementById('lbNum').textContent = String(lbIdx + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+      document.getElementById('lbTitleTop').textContent = d.title;
+      img.style.opacity = '1';
+    }, 100);
+    buildLbStrip();
+    // scroll strip thumbnail into view
+    setTimeout(function(){
+      var strip = document.getElementById('lbStrip');
+      var active = strip.querySelector('.lb-strip-thumb.active');
+      if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }, 120);
+  }
+
+  function openLb(i) {
+    lbIdx = i;
+    var d = designs[i];
+    var img = document.getElementById('lbImg');
+    img.src = d.src;
+    img.alt = d.title;
+    document.getElementById('lbNum').textContent = String(i + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+    document.getElementById('lbTitleTop').textContent = d.title;
+    buildLbStrip();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    img.style.transition = 'opacity 0.12s ease';
+  }
+
+  function closeLb() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function lbStep(dir) { lbGo(lbIdx + dir); }
+
+  document.getElementById('lightbox').addEventListener('click', function(e){
+    if (e.target === this) closeLb();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') lbStep(-1);
+    if (e.key === 'ArrowRight') lbStep(1);
   });
 </script>
 </body>
