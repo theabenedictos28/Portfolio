@@ -587,7 +587,7 @@
         <span>Web Developer</span><span class="sep"> \ </span><span>UI/UX Designer</span><span class="sep"> \ </span><span>Freelancer</span>
       </p>
       <div class="cta">
-        <a class="btn btn-fill" href="mailto:altheabenedictos1@gmail.com">
+        <a class="btn btn-fill" href="/cdn-cgi/l/email-protection#57363b233f323635323932333e342338246617303a363e3b7934383a">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           Send Email
         </a>
@@ -817,7 +817,10 @@
               <div class="fs-title">Eco Flask</div>
               <div class="fs-sub">Product UI/UX</div>
             </div>
-            <span class="fs-badge">Figma</span>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0;">
+              <span class="fs-badge">Figma</span>
+              <span style="font-size:9.5px;color:var(--muted);font-family:var(--mono);white-space:nowrap;">5 frames ↗</span>
+            </div>
           </div>
         </div>
 
@@ -1011,9 +1014,9 @@
   <section>
     <p class="label">Get in Touch</p>
     <div class="cgrid">
-      <a class="citem" href="mailto:altheabenedictos1@gmail.com">
+      <a class="citem" href="/cdn-cgi/l/email-protection#ff9e938b979a9e9d9a919a9b969c8b908ccebf98929e9693d19c9092">
         <div class="clabel">Email</div>
-        <div class="cvalue">altheabenedictos1@gmail.com</div>
+        <div class="cvalue"><span class="__cf_email__" data-cfemail="caaba6bea2afaba8afa4afaea3a9bea5b9fb8aada7aba3a6e4a9a5a7">[email&#160;protected]</span></div>
       </a>
       <a class="citem" href="tel:+639352558376">
         <div class="clabel">Phone</div>
@@ -1054,7 +1057,7 @@
 
 </div><!-- /page -->
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   /* ── THEME ── */
   (function() {
     var saved = localStorage.getItem('theme');
@@ -1169,53 +1172,121 @@
   });
 
   /* ── LIGHTBOX ── */
-  var lbIdx = 0;
+
+  // designs[0] (Eco Flask) has 5 sub-images; all others have 1
+  var designImages = [
+    // Eco Flask — 5 frames
+    [
+      { src: 'img/eco.png',  label: 'Frame 1' },
+      { src: 'img/eco2.png', label: 'Frame 2' },
+      { src: 'img/eco3.png', label: 'Frame 3' },
+      { src: 'img/eco4.png', label: 'Frame 4' },
+      { src: 'img/eco5.png', label: 'Frame 5' },
+    ],
+    // C8nnect
+    [{ src: 'img/c8nnect.png', label: '' }],
+    // MyLGU
+    [{ src: 'img/mylgu.png', label: '' }],
+    // Moodly
+    [{ src: 'img/moodly.png', label: '' }],
+    // HRIS
+    [{ src: 'img/hris.png', label: '' }],
+    // LMS
+    [{ src: 'img/lms.png', label: '' }],
+    // Construction System
+    [{ src: 'img/construction.png', label: '' }],
+  ];
+
+  var lbDesignIdx = 0;   // which design (0–6)
+  var lbFrameIdx  = 0;   // which frame within that design
+
+  function currentFrames() { return designImages[lbDesignIdx]; }
 
   function buildLbStrip() {
-    var strip = document.getElementById('lbStrip');
+    var strip  = document.getElementById('lbStrip');
+    var frames = currentFrames();
     strip.innerHTML = '';
-    designs.forEach(function(d, i) {
-      var thumb = document.createElement('div');
-      thumb.className = 'lb-strip-thumb' + (i === lbIdx ? ' active' : '');
-      thumb.innerHTML = '<img src="' + d.src + '" alt="' + d.title + '" onerror="this.parentElement.innerHTML=\'<div class=lb-strip-placeholder>' + (i+1) + '</div>\'">';
-      thumb.addEventListener('click', function(){ lbGo(i); });
-      strip.appendChild(thumb);
-    });
-  }
 
-  function lbGo(i) {
-    lbIdx = (i + total) % total;
-    var d = designs[lbIdx];
-    var img = document.getElementById('lbImg');
-    img.style.opacity = '0';
-    setTimeout(function() {
-      img.src = d.src;
-      img.alt = d.title;
-      document.getElementById('lbNum').textContent = String(lbIdx + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
-      document.getElementById('lbTitleTop').textContent = d.title;
-      img.style.opacity = '1';
-    }, 100);
-    buildLbStrip();
-    // scroll strip thumbnail into view
+    if (frames.length <= 1) {
+      // Single image — show the 7 design thumbs (global navigation)
+      designs.forEach(function(d, i) {
+        var thumb = document.createElement('div');
+        thumb.className = 'lb-strip-thumb' + (i === lbDesignIdx ? ' active' : '');
+        thumb.innerHTML = '<img src="' + d.src + '" alt="' + d.title + '" onerror="this.parentElement.innerHTML=\'<div class=lb-strip-placeholder>' + (i+1) + '</div>\'">';
+        thumb.addEventListener('click', function(){ openLb(i); });
+        strip.appendChild(thumb);
+      });
+    } else {
+      // Multi-frame design — show its own frames as thumbs
+      frames.forEach(function(f, i) {
+        var thumb = document.createElement('div');
+        thumb.className = 'lb-strip-thumb' + (i === lbFrameIdx ? ' active' : '');
+        thumb.innerHTML = '<img src="' + f.src + '" alt="' + f.label + '" onerror="this.parentElement.innerHTML=\'<div class=lb-strip-placeholder>' + (i+1) + '</div>\'">';
+        thumb.addEventListener('click', function(){ lbFrameGo(i); });
+        strip.appendChild(thumb);
+      });
+    }
+
+    // scroll active thumb into view
     setTimeout(function(){
-      var strip = document.getElementById('lbStrip');
       var active = strip.querySelector('.lb-strip-thumb.active');
       if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    }, 120);
+    }, 80);
   }
 
-  function openLb(i) {
-    lbIdx = i;
-    var d = designs[i];
-    var img = document.getElementById('lbImg');
-    img.src = d.src;
-    img.alt = d.title;
-    document.getElementById('lbNum').textContent = String(i + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
-    document.getElementById('lbTitleTop').textContent = d.title;
+  function lbRender() {
+    var frames = currentFrames();
+    var frame  = frames[lbFrameIdx];
+    var img    = document.getElementById('lbImg');
+    var isMulti = frames.length > 1;
+
+    img.style.opacity = '0';
+    setTimeout(function() {
+      img.src = frame.src;
+      img.alt = designs[lbDesignIdx].title + (frame.label ? ' — ' + frame.label : '');
+
+      // Counter: "05 / 07" for single, "2 / 5" for multi-frame
+      if (isMulti) {
+        document.getElementById('lbNum').textContent =
+          String(lbFrameIdx + 1).padStart(2,'0') + ' / ' + String(frames.length).padStart(2,'0');
+      } else {
+        document.getElementById('lbNum').textContent =
+          String(lbDesignIdx + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+      }
+
+      // Title: show frame label if multi
+      var titleEl = document.getElementById('lbTitleTop');
+      if (isMulti && frame.label) {
+        titleEl.textContent = designs[lbDesignIdx].title + '  ·  ' + frame.label;
+      } else {
+        titleEl.textContent = designs[lbDesignIdx].title;
+      }
+
+      img.style.opacity = '1';
+    }, 100);
+
     buildLbStrip();
+  }
+
+  function lbFrameGo(i) {
+    var frames = currentFrames();
+    lbFrameIdx = (i + frames.length) % frames.length;
+    lbRender();
+  }
+
+  function lbGo(designIdx) {
+    lbDesignIdx = (designIdx + total) % total;
+    lbFrameIdx  = 0;
+    lbRender();
+  }
+
+  function openLb(designIdx) {
+    lbDesignIdx = designIdx;
+    lbFrameIdx  = 0;
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
-    img.style.transition = 'opacity 0.12s ease';
+    document.getElementById('lbImg').style.transition = 'opacity 0.12s ease';
+    lbRender();
   }
 
   function closeLb() {
@@ -1223,18 +1294,15 @@
     document.body.style.overflow = '';
   }
 
-  function lbStep(dir) { lbGo(lbIdx + dir); }
+  // Arrow navigation — steps through frames if multi, else through designs
+  function lbStep(dir) {
+    var frames = currentFrames();
+    if (frames.length > 1) {
+      lbFrameGo(lbFrameIdx + dir);
+    } else {
+      lbGo(lbDesignIdx + dir);
+    }
+  }
 
   document.getElementById('lightbox').addEventListener('click', function(e){
-    if (e.target === this) closeLb();
-  });
-
-  document.addEventListener('keydown', function(e) {
-    if (!document.getElementById('lightbox').classList.contains('open')) return;
-    if (e.key === 'Escape') closeLb();
-    if (e.key === 'ArrowLeft') lbStep(-1);
-    if (e.key === 'ArrowRight') lbStep(1);
-  });
-</script>
-</body>
-</html>
+    if (e.target === this)
