@@ -1,654 +1,768 @@
-<html lang="en"><head></head><body class="bg-background-light dark:bg-background-dark font-display text-body-light dark:text-body-dark transition-colors duration-300">
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Althea Benedictos</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#3B82F6",
-                        "background-light": "#F8FAFC",
-                        "background-dark": "#0B1120",
-                        "card-light": "#FFFFFF",
-                        "card-dark": "#1E293B",
-                        "heading-light": "#0F172A",
-                        "heading-dark": "#F8FAFC",
-                        "body-light": "#334155",
-                        "body-dark": "#CBD5E1",
-                        "border-light": "#E2E8F0",
-                        "border-dark": "#334155"
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
-<style type="text/tailwindcss">
-        @layer base {
-            .dark-toggle-btn .sun-icon { display: none; }
-            .dark-toggle-btn .moon-icon { display: block; }
-            .dark .dark-toggle-btn .sun-icon { display: block; }
-            .dark .dark-toggle-btn .moon-icon { display: none; }
-        }
-    </style>
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Althea Benedictos — Web Developer & UI/UX Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-
-<div class="sticky top-0 z-50 w-full border-b border-border-light dark:border-border-dark bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
-  <div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
-
-    <!-- Logo -->
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
-        <span class="material-symbols-outlined text-xl">terminal</span>
-      </div>
-      <h2 class="text-xl font-bold tracking-tight text-heading-light dark:text-heading-dark">AB.dev</h2>
-    </div>
-
-    <!-- Desktop nav & dark mode -->
-    <div class="hidden md:flex items-center gap-8">
-      <nav class="flex items-center gap-8 mr-2">
-        <a href="#expertise" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Expertise</a>
-        <a href="#work" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Work</a>
-        <a href="#certificates" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Certificates</a>
-        <a href="#contact" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Contact</a>
-      </nav>
-      <div class="flex items-center gap-4 border-l border-border-light dark:border-border-dark pl-6">
-        <button aria-label="Toggle dark mode" id="desktop-dark-btn" class="dark-toggle-btn p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark">
-          <span class="material-symbols-outlined moon-icon">dark_mode</span>
-          <span class="material-symbols-outlined sun-icon hidden">light_mode</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile hamburger + dark mode -->
-    <div class="md:hidden flex items-center gap-4">
-      <button id="mobile-dark-btn" aria-label="Toggle dark mode" class="dark-toggle-btn p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark">
-        <span class="material-symbols-outlined moon-icon">dark_mode</span>
-        <span class="material-symbols-outlined sun-icon hidden">light_mode</span>
-      </button>
-      <button id="mobile-menu-btn" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-heading-light dark:text-heading-dark">
-        <span class="material-symbols-outlined">menu</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- Mobile menu (no dark mode button here) -->
-  <div id="mobile-menu" class="hidden md:hidden bg-card-light dark:bg-card-dark border-t border-border-light dark:border-border-dark">
-    <nav class="flex flex-col p-4 gap-4">
-      <a href="#expertise" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Expertise</a>
-      <a href="#work" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Work</a>
-      <a href="#certificates" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Certificates</a>
-      <a href="#contact" class="text-sm font-semibold hover:text-primary transition-colors text-body-light dark:text-body-dark dark:hover:text-primary">Contact</a>
-    </nav>
-  </div>
-</div>
-
-<script>
-  // Toggle mobile menu
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
-
-  // Toggle dark mode icons on all buttons
-  const darkBtns = document.querySelectorAll('.dark-toggle-btn');
-  darkBtns.forEach(btn => {
-    const moon = btn.querySelector('.moon-icon');
-    const sun = btn.querySelector('.sun-icon');
-
-    // Initialize correct icon based on current theme
-    if(document.documentElement.classList.contains('dark')){
-      moon.classList.add('hidden');
-      sun.classList.remove('hidden');
-    } else {
-      moon.classList.remove('hidden');
-      sun.classList.add('hidden');
+    :root {
+      --bg:         #ffffff;
+      --bg2:        #f5f5f3;
+      --bg3:        #edede9;
+      --border:     #e0e0db;
+      --border2:    #cecec8;
+      --text:       #0a0a0a;
+      --text2:      #1c1c1c;
+      --muted:      #52524e;
+      --muted2:     #a0a09a;
+      --accent:     #2563eb;
+      --accent2:    #3b82f6;
+      --serif:      'Playfair Display', Georgia, serif;
+      --sans:       'DM Sans', system-ui, sans-serif;
+      --mono:       'DM Mono', monospace;
+      --tr:         background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    [data-theme="dark"] {
+      --bg:         #0a0a0a;
+      --bg2:        #111111;
+      --bg3:        #1a1a1a;
+      --border:     #242424;
+      --border2:    #303030;
+      --text:       #f0f0f0;
+      --text2:      #d8d8d8;
+      --muted:      #888888;
+      --muted2:     #505050;
+      --accent:     #3b82f6;
+      --accent2:    #60a5fa;
     }
 
-    btn.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      moon.classList.toggle('hidden');
-      sun.classList.toggle('hidden');
-    });
-  });
-</script>
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      transition: var(--tr);
+    }
+    a { color: inherit; text-decoration: none; }
 
-<main class="max-w-[1200px] mx-auto px-6">
-<section class="py-20 md:py-32">
-<div class="flex flex-col md:flex-row items-center gap-12">
-<div class="flex-1 flex flex-col gap-8">
-<div class="space-y-4">
-<span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold uppercase tracking-widest">Web Developer & UI/UX Designer</span>
-<h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight text-heading-light dark:text-heading-dark">
-                            Hi, I'm <span class="text-primary">Althea</span>
-</h1>
-<p class="text-lg md:text-xl text-body-light dark:text-body-dark max-w-xl leading-relaxed">
-                            I build digital products that bridge the gap between design and code. Specializing in high-performance web and mobile applications with a focus on user-centric design.
-                        </p>
-</div>
-<div class="flex flex-col gap-6">
-<div class="flex items-center gap-4">
-<a href="#work"
-   class="bg-primary hover:bg-primary/90 text-white
-          px-5 py-3 sm:px-8 sm:py-4
-          rounded-lg sm:rounded-xl
-          text-base sm:text-lg font-bold
-          transition-all shadow-lg shadow-primary/20">
-    View My Work
-</a>
+    /* PAGE */
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 56px 40px 120px;
+    }
 
-<a href="img/resume.pdf" download="Althea_Benedictos_Resume.pdf"
-   class="border border-border-light dark:border-border-dark
-          hover:bg-white dark:hover:bg-slate-800
-          text-heading-light dark:text-heading-dark
-          px-5 py-3 sm:px-8 sm:py-4
-          rounded-lg sm:rounded-xl
-          text-base sm:text-lg font-bold
-          transition-all shadow-sm">
-    Download CV
-</a>
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .f1 { animation: fadeUp 0.5s ease 0.05s both; }
+    .f2 { animation: fadeUp 0.5s ease 0.12s both; }
+    .f3 { animation: fadeUp 0.5s ease 0.19s both; }
+    .f4 { animation: fadeUp 0.5s ease 0.26s both; }
 
+    /* ── HERO — matches bryllim exactly ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
 
-</div>
-<div class="flex items-center gap-6 ml-1">
-<a aria-label="GitHub" class="text-body-light dark:text-body-dark hover:text-primary dark:hover:text-primary transition-colors" href="https://github.com/theabenedictos28" target="_blank">
-<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
-</a>
-<a aria-label="Facebook" class="text-body-light dark:text-body-dark hover:text-primary dark:hover:text-primary transition-colors" href="https://www.facebook.com/teyiaaxx" target="_blank">
-<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"></path></svg>
-</a>
-<a aria-label="Twitter" class="text-body-light dark:text-body-dark hover:text-primary dark:hover:text-primary transition-colors" href="https://x.com/theabenedictos" target="_blank">
-<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
-</a>
-<a aria-label="Instagram" class="text-body-light dark:text-body-dark hover:text-primary dark:hover:text-primary transition-colors" href="https://www.instagram.com/theabenedictos/" target="_blank">
-<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
-</a>
-</div>
-</div>
-</div>
-<div class="w-full md:w-1/2 flex justify-center">
-<div class="relative w-72 h-72 md:w-96 md:h-96">
-<div class="absolute inset-0 bg-primary/20 rounded-3xl rotate-6"></div>
-<div class="absolute inset-0 bg-primary rounded-3xl overflow-hidden shadow-2xl">
-<img alt="Professional headshot of Althea" class="w-full h-full object-cover" src="img/profile.jpg"/>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="py-20 border-t border-border-light dark:border-border-dark" id="expertise">
-<div class="mb-12">
-<h2 class="text-3xl font-bold mb-2 text-heading-light dark:text-heading-dark">Expertise</h2>
-<div class="w-12 h-1 bg-primary rounded-full"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<div class="group p-8 rounded-2xl bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary transition-all duration-300 shadow-sm hover:shadow-xl">
-<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-3xl">developer_mode_tv</span>
-</div>
-<h3 class="text-xl font-bold mb-3 text-heading-light dark:text-heading-dark">Web Development</h3>
-<p class="text-body-light dark:text-body-dark leading-relaxed mb-4">
-                        Building responsive, accessible, and high-performance websites using the latest industry-standard tools and frameworks.
-                    </p>
-<ul class="flex flex-wrap gap-2 text-sm text-body-light dark:text-body-dark font-medium">
-<li class="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full">HTML/CSS</li>
-<li class="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full">JavaScript</li>
-<li class="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full">PHP</li>
-<li class="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full">Tailwind CSS</li>
-</ul>
-</div>
-<div class="group p-8 rounded-2xl bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary transition-all duration-300 shadow-sm hover:shadow-xl">
-<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-3xl">smartphone</span>
-</div>
-<h3 class="text-xl font-bold mb-3 text-heading-light dark:text-heading-dark">Mobile App Dev</h3>
-<p class="text-body-light dark:text-body-dark leading-relaxed mb-4">
-                        Crafting cross-platform mobile solutions that provide a native experience on both iOS and Android.
-                    </p>
-<ul class="flex flex-wrap gap-2 text-sm text-body-light dark:text-body-dark font-medium">
-<li class="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full">C#</li>
-<li class="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full">.NET MAUI</li>
-</ul>
-</div>
-<div class="group p-8 rounded-2xl bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary transition-all duration-300 shadow-sm hover:shadow-xl">
-<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-3xl">draw</span>
-</div>
-<h3 class="text-xl font-bold mb-3 text-heading-light dark:text-heading-dark">UI/UX Design</h3>
-<p class="text-body-light dark:text-body-dark leading-relaxed mb-4">
-                        User-centric interfaces designed in Figma with precision, prototyping, and design systems.
-                    </p>
-<ul class="flex flex-wrap gap-2 text-sm text-body-light dark:text-body-dark font-medium">
-<li class="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full">Figma</li>
-<li class="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full">Design Systems</li>
-</ul>
-</div>
-</div>
-</section>
-<section class="py-20 border-t border-border-light dark:border-border-dark" id="work">
-<div class="mb-16">
-<h2 class="text-3xl font-bold mb-2 text-heading-light dark:text-heading-dark">Selected Work</h2>
-<div class="w-12 h-1 bg-primary rounded-full"></div>
-</div>
-<div class="space-y-24">
+    /* Photo — same size as bryllim */
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg3);
+      flex-shrink: 0;
+    }
+    .avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+      display: block;
+    }
 
+    /* Right side info column */
+    .hero-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-top: 4px;
+    }
 
-<div>
-  <!-- Section Header -->
-  <div class="mb-10">
-    <h3 class="text-2xl font-bold mb-2 text-heading-light dark:text-heading-dark">Projects</h3>
-    <div class="w-8 h-0.5 bg-primary/50 rounded-full"></div>
-  </div>
+    /* Name row: name on left, toggle on far right */
+    .hero-name-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 700;
+      font-style: normal;
+      color: var(--text);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
 
-  <!-- Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    /* Dark mode toggle */
+    .theme-btn {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .theme-btn:hover { border-color: var(--border2); color: var(--text); background: var(--bg3); }
+    .theme-btn svg { width: 15px; height: 15px; fill: currentColor; }
+    .icon-sun  { display: block; }
+    .icon-moon { display: none; }
+    [data-theme="dark"] .icon-sun  { display: none; }
+    [data-theme="dark"] .icon-moon { display: block; }
 
-    <!-- Project Card Template -->
-    <div class="group flex flex-col bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm hover:shadow-xl transition-all">
-      <div class="aspect-video overflow-hidden">
-        <img src="img/tastyhub.jpeg" alt="Project 1"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="p-6 flex flex-col flex-1">
-        <h4 class="text-xl font-bold mb-2 text-heading-light dark:text-heading-dark">Recipe Sharing Website</h4>
-        <p class="text-body-light dark:text-body-dark text-sm mb-6 flex-1">
-          Tasty Hub is a recipe platform where users can upload recipes, leave reviews, and interact with the community.
-        </p>
-        <div class="flex gap-3">
-          <a href="https://github.com/theabenedictos28/Tastyhub-Recipe-Sharing-Website"
-            class="flex items-center justify-center px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-heading-light dark:text-heading-dark rounded-lg text-xs font-bold transition-colors gap-2">
-            <span class="material-symbols-outlined text-sm">code</span> GitHub
-          </a>
-          <a href="https://tastyhub.free.nf/"
-            class="flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg text-xs font-bold transition-colors gap-2">
-            <span class="material-symbols-outlined text-sm">open_in_new</span> Live
-          </a>
-        </div>
-      </div>
+    .hero-loc {
+      display: flex; align-items: center; gap: 5px;
+      color: var(--muted); font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .hero-loc svg { width: 12px; height: 12px; fill: var(--muted); flex-shrink: 0; }
+
+    .hero-role {
+      font-size: 16px;
+      color: var(--text2);
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+    .hero-role span { color: var(--text); }
+    .hero-role .sep { color: var(--muted); margin: 0 4px; }
+
+    /* CTA buttons row — matches bryllim style */
+    .cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 18px;
+      border-radius: 7px;
+      font-family: var(--sans);
+      font-size: 12px; font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      border: 1px solid var(--border2);
+      background: var(--bg2);
+      color: var(--text);
+    }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(37,99,235,0.05); }
+    .btn-fill {
+      background: var(--text);
+      border-color: var(--text);
+      color: var(--bg);
+      font-weight: 600;
+    }
+    .btn-fill:hover { background: var(--text2); border-color: var(--text2); color: var(--bg); }
+    .btn-ghost {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 9px 4px;
+    }
+    .btn-ghost:hover { color: var(--text); background: transparent; border: none; }
+
+    /* DIVIDER */
+    .divider { height: 1px; background: var(--border); margin: 40px 0; }
+
+    /* SECTION LABEL */
+    .label {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 20px;
+      font-family: var(--serif);
+      letter-spacing: -0.01em;
+    }
+
+    /* STATUS */
+    .status {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11px; color: #15803d;
+      background: rgba(21,128,61,0.07);
+      border: 1px solid rgba(21,128,61,0.18);
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-bottom: 20px;
+    }
+    [data-theme="dark"] .status { color: #4ade80; background: rgba(74,222,128,0.08); border-color: rgba(74,222,128,0.2); }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #15803d; animation: blink 2s infinite; }
+    [data-theme="dark"] .dot { background: #4ade80; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    /* ABOUT — full width */
+    .about-section {
+      display: block;
+    }
+    .about-text { color: var(--text2); font-size: 14px; line-height: 1.85; }
+    .about-text p + p { margin-top: 14px; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+
+    /* Freelancer card (right side of about, like bryllim's dev card) */
+    .freelancer-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--bg2);
+      padding: 24px;
+      font-size: 12px;
+    }
+    .card-icon {
+      font-size: 22px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .card-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; letter-spacing: 0.02em; }
+    .card-sub { color: var(--muted); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+    .card-role-label { color: var(--muted); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+    .card-role-value { color: var(--text); font-size: 13px; font-weight: 600; }
+
+    /* TECH + EXPERIENCE two-column */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 700px) {
+      .two-col { grid-template-columns: 1fr; gap: 0; }
+    }
+    /* TIMELINE — vertical dot + line */
+    .tl-list { display: flex; flex-direction: column; }
+    .tl-item {
+      display: flex;
+      gap: 14px;
+      position: relative;
+      border: none;
+      padding: 0 0 22px 0;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 14px;
+    }
+    .tl-dot-circle {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--border2);
+      background: var(--bg);
+      flex-shrink: 0;
+      margin-top: 3px;
+      z-index: 1;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .tl-item:first-child .tl-dot-circle {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+    .tl-line {
+      width: 1px;
+      flex: 1;
+      background: var(--border);
+      margin-top: 5px;
+      min-height: 16px;
+    }
+    .tl-item:last-child .tl-line { display: none; }
+    .tl-right { flex: 1; }
+    .tl-year { color: var(--muted); font-size: 10.5px; font-weight: 500; margin-bottom: 3px; }
+    .tl-title { color: var(--text); font-size: 12.5px; font-weight: 600; margin-bottom: 2px; line-height: 1.4; }
+    .tl-sub { color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .tl-dot { display: none; }
+
+    /* TECH STACK — with "View All" header like bryllim */
+    .section-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .view-all { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 4px; transition: color 0.15s; }
+    .view-all:hover { color: var(--accent); }
+
+    .stack-group { margin-bottom: 18px; }
+    .stack-gl { font-size: 11px; color: var(--muted); margin-bottom: 9px; font-weight: 500; letter-spacing: 0.04em; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      padding: 5px 11px; border-radius: 6px; font-size: 11.5px;
+      border: 1px solid var(--border); background: var(--bg2);
+      color: var(--text2); transition: all 0.15s; font-weight: 500;
+    }
+    .tag:hover { border-color: var(--accent); color: var(--accent); background: rgba(37,99,235,0.05); }
+
+    /* PROJECTS */
+    .proj-item {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+      gap: 12px; cursor: pointer; transition: all 0.15s;
+    }
+    .proj-item:first-child { border-top: 1px solid var(--border); }
+    .proj-item:hover { background: var(--bg2); margin: 0 -12px; padding: 14px 12px; border-radius: 6px; border-color: transparent; }
+    .proj-item:hover .proj-name { color: var(--accent); }
+    .proj-item:hover .arrow { transform: translateX(3px); color: var(--accent); }
+    .proj-left { flex: 1; min-width: 0; }
+    .proj-name { color: var(--text); font-size: 13.5px; font-weight: 600; margin-bottom: 3px; transition: color 0.15s; }
+    .proj-desc { color: var(--muted); font-size: 11.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .proj-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .arrow { color: var(--muted2); font-size: 16px; transition: all 0.15s; }
+    .plinks { display: flex; gap: 5px; }
+    .pl {
+      font-size: 10.5px; padding: 4px 9px;
+      border: 1px solid var(--border); border-radius: 5px;
+      color: var(--muted); transition: all 0.15s; font-weight: 500;
+    }
+    .pl:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* DESIGNS */
+    .designs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .dcard { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg2); transition: all 0.2s; display: block; }
+    .dcard:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.1); }
+    .dcard img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--bg3); }
+    .dcard-body { padding: 11px 13px; }
+    .dcard-title { font-size: 12.5px; color: var(--text); font-weight: 600; margin-bottom: 2px; }
+    .dcard-sub { font-size: 10.5px; color: var(--muted); }
+
+    /* CERTS */
+    .cert { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .cert:first-child { border-top: 1px solid var(--border); }
+    .cert-name { color: var(--text); font-size: 13.5px; font-weight: 600; margin-bottom: 3px; }
+    .cert-org { color: var(--muted); font-size: 11.5px; }
+    .cert-date { color: var(--muted2); font-size: 11px; white-space: nowrap; }
+
+    /* CONTACT */
+    .cgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+    .citem { padding: 15px 18px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg2); transition: all 0.15s; display: block; }
+    .citem:hover { border-color: var(--accent); background: rgba(37,99,235,0.04); }
+    .clabel { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 5px; }
+    .cvalue { font-size: 12.5px; color: var(--text); font-weight: 600; }
+
+    /* SOCIALS */
+    .socials { display: flex; gap: 8px; flex-wrap: wrap; }
+    .slink { display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px; border: 1px solid var(--border); border-radius: 7px; font-size: 11.5px; color: var(--muted); background: var(--bg2); transition: all 0.15s; font-weight: 500; }
+    .slink:hover { border-color: var(--accent); color: var(--accent); }
+    .slink svg { width: 13px; height: 13px; fill: currentColor; }
+
+    /* FOOTER */
+    footer { margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; color: var(--muted2); font-size: 11px; flex-wrap: wrap; gap: 8px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; }
+      .avatar { width: 120px; aspect-ratio: 1; border-radius: 50%; }
+      .about-section { grid-template-columns: 1fr; }
+      .cgrid { grid-template-columns: 1fr; }
+      .designs { grid-template-columns: 1fr; }
+      .tl-item { grid-template-columns: 80px 1fr; }
+      .proj-desc { display: none; }
+      .page { padding: 40px 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HERO ── -->
+  <div class="hero f1">
+
+    <!-- Big photo left -->
+    <div class="avatar">
+      <img src="img/profile.jpg" alt="Althea Benedictos"
+        onerror="this.src='https://ui-avatars.com/api/?name=Althea+Benedictos&background=2563eb&color=fff&size=400'"/>
     </div>
 
-    <!-- Repeat for other projects -->
-    <div class="group flex flex-col bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm hover:shadow-xl transition-all">
-      <div class="aspect-video overflow-hidden">
-        <img src="img/flippix.png" alt="Project 2"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="p-6 flex flex-col flex-1">
-        <h4 class="text-xl font-bold mb-2 text-heading-light dark:text-heading-dark">Flashcard Reviewer</h4>
-        <p class="text-body-light dark:text-body-dark text-sm mb-6 flex-1">
-          Flippix is a smart study tool for reviewing topics through organized decks and guided hints.
-        </p>
-        <div class="flex gap-3">
-          <a href="https://github.com/theabenedictos28/Flippix-Flashcard-Reviewer"
-            class="flex items-center justify-center px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-heading-light dark:text-heading-dark rounded-lg text-xs font-bold transition-colors gap-2">
-            <span class="material-symbols-outlined text-sm">code</span> GitHub
-          </a>
-          <a href="https://flippix.ct.ws"
-            class="flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg text-xs font-bold transition-colors gap-2">
-            <span class="material-symbols-outlined text-sm">open_in_new</span> Live
-          </a>
-        </div>
-      </div>
-    </div>
+    <!-- Info right -->
+    <div class="hero-info">
 
-    <div class="group flex flex-col bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm hover:shadow-xl transition-all">
-      <div class="aspect-video overflow-hidden">
-        <img src="img/kopi.png" alt="Project 3"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+      <!-- Name row with toggle on far right -->
+      <div class="hero-name-row">
+        <h1 class="hero-name">Althea Benedictos</h1>
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24"><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></svg>
+        </button>
       </div>
-      <div class="p-6 flex flex-col flex-1">
-        <h4 class="text-xl font-bold mb-2 text-heading-light dark:text-heading-dark">Coffee Shop Website</h4>
-        <p class="text-body-light dark:text-body-dark text-sm mb-6 flex-1">
-          Kopi is a coffee shop website showcasing menu, navigation, and inviting layout for customers.
-        </p>
-        <div class="flex gap-3">
-          <a href="https://github.com/theabenedictos28/Kopi-Coffee-Shop-Website"
-            class="flex items-center justify-center px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-heading-light dark:text-heading-dark rounded-lg text-xs font-bold transition-colors gap-2">
-            <span class="material-symbols-outlined text-sm">code</span> GitHub
-          </a>
-          <a href="https://kopishop.ct.ws/"
-            class="flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg text-xs font-bold transition-colors gap-2">
-            <span class="material-symbols-outlined text-sm">open_in_new</span> Live
-          </a>
-        </div>
-      </div>
-    </div>
-
-        <div class="group flex flex-col bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm hover:shadow-xl transition-all">
-      <div class="aspect-video overflow-hidden">
-        <img src="img/likha.png" alt="Project 4"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="p-6 flex flex-col flex-1">
-        <h4 class="text-xl font-bold mb-2 text-heading-light dark:text-heading-dark">E-Commerce Platform</h4>
-        <p class="text-body-light dark:text-body-dark text-sm mb-6 flex-1">
-          LikhaPH is an e-commerce platform that showcases Indigenous-made products, allowing customers to browse, purchase, and receive tracking details seamlessly without requiring an account.
-        </p>
-        <div class="flex gap-3">
-          <a href="https://github.com/theabenedictos28/LikhaPH-e-commerce-website"
-            class="flex items-center justify-center px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-heading-light dark:text-heading-dark rounded-lg text-xs font-bold transition-colors gap-2">
-            <span class="material-symbols-outlined text-sm">code</span> GitHub
-          </a>
-          <a href="https://likhaph.vercel.app/"
-            class="flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg text-xs font-bold transition-colors gap-2">
-            <span class="material-symbols-outlined text-sm">open_in_new</span> Live
-          </a>
-        </div>
-      </div>
-    </div>
-
-  <div class="group flex flex-col bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm hover:shadow-xl transition-all">
-      <div class="aspect-video overflow-hidden">
-        <img src="img/eco.png" alt="Project 6"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="p-6 flex flex-col flex-1">
-        <h4 class="text-xl font-bold mb-2 text-heading-light dark:text-heading-dark">ECO Flask</h4>
-        <p class="text-body-light dark:text-body-dark text-sm mb-6 flex-1">
-          ECO Flask is a product website that showcases an eco-friendly reusable bottle designed to promote sustainability and reduce plastic waste.
-        </p>
-        <div class="flex gap-3">
-          <a href="https://github.com/theabenedictos28/EcoFlask"
-            class="flex items-center justify-center px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-heading-light dark:text-heading-dark rounded-lg text-xs font-bold transition-colors gap-2">
-            <span class="material-symbols-outlined text-sm">code</span> GitHub
-          </a>
-          <a href="https://bottle.wholeecoph.com/home"
-            class="flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg text-xs font-bold transition-colors gap-2">
-            <span class="material-symbols-outlined text-sm">open_in_new</span> Live
-          </a>
-        </div>
-      </div>
-    </div>
-
-     <div class="group flex flex-col bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm hover:shadow-xl transition-all">
-      <div class="aspect-video overflow-hidden">
-        <img src="img/mylgu.png" alt="Project 6"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="p-6 flex flex-col flex-1">
-        <h4 class="text-xl font-bold mb-2 text-heading-light dark:text-heading-dark">MyLGU</h4>
-        <p class="text-body-light dark:text-body-dark text-sm mb-6 flex-1">
-          This landing page is for promoting the app. MyLGU is a government service website that provides citizens with easy access to local services, announcements, and community resources.
-        </p>
-        <div class="flex gap-3">
-          <a href="https://github.com/theabenedictos28/MyLGU"
-            class="flex items-center justify-center px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-heading-light dark:text-heading-dark rounded-lg text-xs font-bold transition-colors gap-2">
-            <span class="material-symbols-outlined text-sm">code</span> GitHub
-          </a>
-          <a href="https://mylgu.vercel.app/"
-            class="flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg text-xs font-bold transition-colors gap-2">
-            <span class="material-symbols-outlined text-sm">open_in_new</span> Live
-          </a>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Example for Moodly (only GitHub, no live link) -->
-    <div class="group flex flex-col bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm hover:shadow-xl transition-all">
-      <div class="aspect-video overflow-hidden">
-        <img src="img/moodly.jpeg" alt="Project 5"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="p-6 flex flex-col flex-1">
-        <h4 class="text-xl font-bold mb-2 text-heading-light dark:text-heading-dark">Mood Tracker</h4>
-        <p class="text-body-light dark:text-body-dark text-sm mb-6 flex-1">
-          Moodly is a mood-tracking app for logging daily emotions, viewing insights, and accessing positive affirmations.
-        </p>
-        <div class="flex gap-3">
-          <a href="https://github.com/theabenedictos28/Moodly-Mood-Tracker"
-            class="flex items-center justify-center px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-heading-light dark:text-heading-dark rounded-lg text-xs font-bold transition-colors gap-2">
-            <span class="material-symbols-outlined text-sm">code</span> GitHub
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div>
-  <!-- Section Header -->
-  <div class="mb-10">
-    <h3 class="text-2xl font-bold mb-2 text-heading-light dark:text-heading-dark">Designs</h3>
-    <div class="w-8 h-0.5 bg-primary/50 rounded-full"></div>
-  </div>
-
-  <!-- Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-    <!-- Design 1 -->
-    <div class="group bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm hover:shadow-xl transition-all">
-      <div class="w-full relative pb-[75%] overflow-hidden">
-        <img src="img/eco.png" alt="Design 1"
-          class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="p-5">
-        <h4 class="text-lg font-bold mb-1 text-heading-light dark:text-heading-dark">Eco Flask UI/UX Design</h4>
-        <p class="text-body-light dark:text-body-dark text-xs mb-4">
-          A clean and interactive UI/UX design for Eco Flask, showcasing product features and user-friendly interfaces.
-        </p>
-        <a href="https://www.figma.com/design/rh0rACTODKs9uV4LMhT6BG/Eco-Flask?m=auto&t=CfkpN3orVoiINdVq-6"
-          class="w-full px-4 py-2.5 bg-slate-100 dark:bg-slate-800 text-heading-light dark:text-heading-dark rounded-lg text-xs font-bold flex items-center justify-center gap-2 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-border-light dark:border-border-dark">
-          <span class="material-symbols-outlined text-sm">draw</span> View on Figma
-        </a>
-      </div>
-    </div>
-
-    <!-- Design 2 -->
-    <div class="group bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm hover:shadow-xl transition-all">
-      <div class="w-full relative pb-[75%] overflow-hidden">
-        <img src="img/c8nnect.png" alt="Design 2"
-          class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="p-5">
-        <h4 class="text-lg font-bold mb-1 text-heading-light dark:text-heading-dark">C8nnect UI/UX Design</h4>
-        <p class="text-body-light dark:text-body-dark text-xs mb-4">
-          A corporate website UI designed to showcase the platform, its vision, and services.
-        </p>
-        <a href="https://www.figma.com/design/3bdvgPmz18BLKbidxInxuE/C8nnect?m=auto&t=CfkpN3orVoiINdVq-6"
-          class="w-full px-4 py-2.5 bg-slate-100 dark:bg-slate-800 text-heading-light dark:text-heading-dark rounded-lg text-xs font-bold flex items-center justify-center gap-2 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-border-light dark:border-border-dark">
-          <span class="material-symbols-outlined text-sm">draw</span> View on Figma
-        </a>
-      </div>
-    </div>
-
-    <!-- Design 3 -->
-    <div class="group bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm hover:shadow-xl transition-all">
-      <div class="w-full relative pb-[75%] overflow-hidden">
-        <img src="img/mylgu.png" alt="Design 3"
-          class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="p-5">
-        <h4 class="text-lg font-bold mb-1 text-heading-light dark:text-heading-dark">MyLGU UI/UX Design</h4>
-        <p class="text-body-light dark:text-body-dark text-xs mb-4">
-          A mobile and web platform for digital government services and citizen access.
-        </p>
-        <a href="https://www.figma.com/design/Y1uONA5r8NpXypqmDrUmmw/MyLGU?m=auto&t=bXkpVdmeXHYhTwQd-6"
-          class="w-full px-4 py-2.5 bg-slate-100 dark:bg-slate-800 text-heading-light dark:text-heading-dark rounded-lg text-xs font-bold flex items-center justify-center gap-2 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-border-light dark:border-border-dark">
-          <span class="material-symbols-outlined text-sm">draw</span> View on Figma
-        </a>
-      </div>
-    </div>
-
-    <!-- Design 4 -->
-    <div class="group bg-card-light dark:bg-card-dark rounded-2xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm hover:shadow-xl transition-all">
-      <div class="w-full relative pb-[75%] overflow-hidden">
-        <img src="img/moodly.png" alt="Design 4"
-          class="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="p-5">
-        <h4 class="text-lg font-bold mb-1 text-heading-light dark:text-heading-dark">Mood Tracker App UI/UX</h4>
-        <p class="text-body-light dark:text-body-dark text-xs mb-4">
-          A mood tracking app UI built for emotional awareness and daily reflection.
-        </p>
-        <a href="https://www.figma.com/design/ogKBc0OdGvQN5wLYyREQ4b/Moodly?m=auto&t=bXkpVdmeXHYhTwQd-6"
-          class="w-full px-4 py-2.5 bg-slate-100 dark:bg-slate-800 text-heading-light dark:text-heading-dark rounded-lg text-xs font-bold flex items-center justify-center gap-2 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-border-light dark:border-border-dark">
-          <span class="material-symbols-outlined text-sm">draw</span> View on Figma
-        </a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-
-</div>
-</section>
-<section class="py-20 border-t border-border-light dark:border-border-dark" id="certificates">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-<div>
-<div class="mb-8">
-<h2 class="text-3xl font-bold mb-2 text-heading-light dark:text-heading-dark">Certificates and Training</h2>
-<div class="w-12 h-1 bg-primary rounded-full"></div>
-</div>
-<div class="space-y-8">
-<div class="p-6 rounded-xl bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark shadow-sm">
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-<span class="material-symbols-outlined">verified</span>
-</div>
-<div>
-<h4 class="text-lg font-bold text-heading-light dark:text-heading-dark">TESDA NATIONAL CERTIFICATION II PASSER</h4>
-<p class="text-primary font-bold text-sm">Computer System Servicing</p>
-<div class="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-sm text-body-light dark:text-body-dark">
-<span class="flex items-center gap-1.5 font-medium"><span class="material-symbols-outlined text-base">calendar_month</span> October 13, 2023</span>
-<span class="flex items-center gap-1.5 font-medium"><span class="material-symbols-outlined text-base">location_on</span> Guiguinto, Bulacan</span>
-</div>
-</div>
-</div>
-</div>
-<div class="p-6 rounded-xl bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark shadow-sm">
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-<span class="material-symbols-outlined">precision_manufacturing</span>
-</div>
-<div>
-<h4 class="text-lg font-bold text-heading-light dark:text-heading-dark">ROBOTICS TRAINING AND WORKSHOP</h4>
-<p class="text-primary font-bold text-sm">Felta Techvoc Academy Inc.</p>
-<div class="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-sm text-body-light dark:text-body-dark">
-<span class="flex items-center gap-1.5 font-medium"><span class="material-symbols-outlined text-base">calendar_month</span> November 15, 2024</span>
-<span class="flex items-center gap-1.5 font-medium"><span class="material-symbols-outlined text-base">location_on</span> Quezon City</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div>
-<div class="mb-8">
-<h2 class="text-3xl font-bold mb-2 text-heading-light dark:text-heading-dark">Experience</h2>
-<div class="w-12 h-1 bg-primary rounded-full"></div>
-</div>
-<div class="relative pl-8 space-y-12 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-border-light dark:before:bg-border-dark">
-<div class="relative">
-<div class="absolute -left-10 top-0 w-4 h-4 rounded-full bg-primary border-4 border-background-light dark:border-background-dark"></div>
-<h4 class="text-lg font-bold text-heading-light dark:text-heading-dark">Freelance Web Developer &amp; Designer</h4>
-<span class="text-sm text-primary font-bold">2023 — Present</span>
-<p class="mt-2 text-body-light dark:text-body-dark text-sm leading-relaxed">
-                              Delivering modern websites and high-fidelity UI designs that scale with your vision.
-                            </p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="py-24 border-t border-border-light dark:border-border-dark" id="contact">
-  <!-- Section header -->
-  <div class="max-w-[800px] mx-auto text-center mb-16 px-4">
-    <h2 class="text-4xl font-black mb-6 tracking-tight text-heading-light dark:text-heading-dark">Let's Work Together</h2>
-    <p class="text-body-light dark:text-body-dark text-lg leading-relaxed">
-      Have a project in mind? Reach out and let's make it happen. I'm currently open to freelance opportunities and collaborations.
-    </p>
-  </div>
-
-  <!-- Contact items -->
-  <div class="max-w-5xl mx-auto px-4">
-    <div class="flex flex-col md:flex-row items-center justify-center gap-x-12 gap-y-10">
-
-      <!-- Email -->
-      <div class="flex items-center gap-4 group">
-        <div class="w-14 h-14 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
-          <span class="material-symbols-outlined text-2xl">mail</span>
-        </div>
-        <div class="space-y-0.5 text-left">
-          <p class="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">Email</p>
-          <a class="text-base font-bold text-heading-light dark:text-heading-dark hover:text-primary dark:hover:text-primary transition-colors" href="mailto:altheabenedictos1@gmail.com">altheabenedictos1@gmail.com</a>
-        </div>
-      </div>
-
-      <!-- Divider -->
-      <div class="hidden md:block w-px h-10 bg-border-light dark:bg-border-dark"></div>
-
-      <!-- Phone -->
-      <div class="flex items-center gap-4 group">
-        <div class="w-14 h-14 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
-          <span class="material-symbols-outlined text-2xl">call</span>
-        </div>
-        <div class="space-y-0.5 text-left">
-          <p class="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">Phone</p>
-          <a class="text-base font-bold text-heading-light dark:text-heading-dark hover:text-primary dark:hover:text-primary transition-colors" href="tel:+639352558376">+63 935 255 8376</a>
-        </div>
-      </div>
-
-      <!-- Divider -->
-      <div class="hidden md:block w-px h-10 bg-border-light dark:bg-border-dark"></div>
 
       <!-- Location -->
-      <div class="flex items-center gap-4 group">
-        <div class="w-14 h-14 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
-          <span class="material-symbols-outlined text-2xl">location_on</span>
-        </div>
-        <div class="space-y-0.5 text-left">
-          <p class="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">Location</p>
-          <p class="text-base font-bold text-heading-light dark:text-heading-dark">Plaridel, Bulacan</p>
-        </div>
+      <p class="hero-loc">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Plaridel, Bulacan, Philippines
+      </p>
+
+      <!-- Role line -->
+      <p class="hero-role">
+        <span>Web Developer</span><span class="sep"> \ </span><span>UI/UX Designer</span><span class="sep"> \ </span><span>Freelancer</span>
+      </p>
+
+      <!-- CTA buttons -->
+      <div class="cta">
+        <a class="btn btn-fill" href="/cdn-cgi/l/email-protection#1b7a776f737e7a797e757e7f72786f74682a5b7c767a727735787476">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Send Email
+        </a>
+        <a class="btn" href="img/resume.pdf" download>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          Download CV
+        </a>
+        <a class="btn btn-ghost" href="#work">
+          View Work →
+        </a>
       </div>
 
     </div>
   </div>
-</section>
 
-</main>
-<footer class="py-12 border-t border-border-light dark:border-border-dark bg-white dark:bg-background-dark">
-<div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
-<div class="flex items-center gap-3">
-<div class="w-6 h-6 bg-primary rounded flex items-center justify-center text-white">
-<span class="material-symbols-outlined text-sm">terminal</span>
-</div>
-<span class="font-bold text-heading-light dark:text-heading-dark">AB.dev</span>
-</div>
-  <p class="text-sm text-body-light dark:text-body-dark">© 2025. All rights reserved.</p>
-<div class="flex items-center gap-6">
-<a aria-label="GitHub" class="text-body-light dark:text-body-dark hover:text-primary dark:hover:text-primary transition-colors" href="https://github.com/theabenedictos28" target="_blank">
-<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
-</a>
-<a aria-label="Facebook" class="text-body-light dark:text-body-dark hover:text-primary dark:hover:text-primary transition-colors" href="https://www.facebook.com/teyiaaxx" target="_blank">
-<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"></path></svg>
-</a>
-<a aria-label="Twitter" class="text-body-light dark:text-body-dark hover:text-primary dark:hover:text-primary transition-colors" href="https://x.com/theabenedictos" target="_blank">
-<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
-</a>
-<a aria-label="Instagram" class="text-body-light dark:text-body-dark hover:text-primary dark:hover:text-primary transition-colors" href="https://www.instagram.com/theabenedictos/" target="_blank">
-<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
-</a>
-</div>
-</div>
-</footer>
+  <div class="divider f2"></div>
 
-```</body></html>
+  <!-- ── ABOUT (two-col like bryllim) ── -->
+  <section class="f3">
+    <div class="about-section">
+      <div>
+        <p class="label">About</p>
+        <div class="about-text">
+          <p>I'm a web developer and UI/UX designer who bridges the gap between design and code — building products that look great <strong>and</strong> work seamlessly.</p>
+          <p>I work with <strong>React, TypeScript, Tailwind CSS</strong> on the frontend, and <strong>Node.js</strong> with <strong>PostgreSQL</strong> on the backend, and design pixel-perfect interfaces in <strong>Figma</strong> and <strong>Canva</strong>. My projects range from e-commerce platforms to mobile apps and government service portals.</p>
+          <p>Currently freelancing and always open to exciting projects. Based in Bulacan, Philippines 🇵🇭</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── TECH STACK + EXPERIENCE side by side ── -->
+  <div class="two-col">
+
+    <!-- Tech Stack -->
+    <section class="f4">
+      <div class="section-header">
+        <p class="label">Tech Stack</p>
+      </div>
+      <div class="stack-group">
+        <div class="stack-gl">Frontend</div>
+        <div class="tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">React</span>
+          <span class="tag">Tailwind CSS</span>
+          <span class="tag">Vite</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-gl">Backend</div>
+        <div class="tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">PHP</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-gl">Mobile</div>
+        <div class="tags">
+          <span class="tag">C#</span>
+          <span class="tag">.NET</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-gl">Design</div>
+        <div class="tags">
+          <span class="tag">Figma</span>
+          <span class="tag">Canva</span>
+          <span class="tag">Design Systems</span>
+          <span class="tag">Prototyping</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section>
+      <p class="label">Experience</p>
+      <div class="tl-list">
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot-circle"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-year">2023 — Now</div>
+            <div class="tl-title">Freelance Web Developer &amp; Designer</div>
+            <div class="tl-sub">Self-employed · Delivering modern websites &amp; UI designs</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot-circle"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-year">Nov 2024</div>
+            <div class="tl-title">Robotics Training &amp; Workshop</div>
+            <div class="tl-sub">Felta Techvoc Academy Inc. · Quezon City</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot-circle"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-year">Oct 2023</div>
+            <div class="tl-title">TESDA NC II Passer</div>
+            <div class="tl-sub">Computer System Servicing · Guiguinto, Bulacan</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot-circle"></div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-year">2015</div>
+            <div class="tl-title">Hello World! 👋</div>
+            <div class="tl-sub">Wrote my first line of code</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── PROJECTS ── -->
+  <section id="work">
+    <p class="label">Recent Projects</p>
+
+    <div class="proj-item" onclick="window.open('https://likhaph.vercel.app/','_blank')">
+      <div class="proj-left">
+        <div class="proj-name">LikhaPH — E-Commerce Platform</div>
+        <div class="proj-desc">Indigenous-made products marketplace · PHP, HTML/CSS, JS</div>
+      </div>
+      <div class="proj-right">
+        <div class="plinks" onclick="event.stopPropagation()">
+          <a class="pl" href="https://github.com/theabenedictos28/LikhaPH-e-commerce-website" target="_blank">GitHub</a>
+          <a class="pl" href="https://likhaph.vercel.app/" target="_blank">Live</a>
+        </div>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="proj-item" onclick="window.open('https://tastyhub.free.nf/','_blank')">
+      <div class="proj-left">
+        <div class="proj-name">Tasty Hub — Recipe Sharing Website</div>
+        <div class="proj-desc">Community recipe platform with reviews · PHP</div>
+      </div>
+      <div class="proj-right">
+        <div class="plinks" onclick="event.stopPropagation()">
+          <a class="pl" href="https://github.com/theabenedictos28/Tastyhub-Recipe-Sharing-Website" target="_blank">GitHub</a>
+          <a class="pl" href="https://tastyhub.free.nf/" target="_blank">Live</a>
+        </div>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="proj-item" onclick="window.open('https://flippix.ct.ws','_blank')">
+      <div class="proj-left">
+        <div class="proj-name">Flippix — Flashcard Reviewer</div>
+        <div class="proj-desc">Smart study tool with organized decks and guided hints</div>
+      </div>
+      <div class="proj-right">
+        <div class="plinks" onclick="event.stopPropagation()">
+          <a class="pl" href="https://github.com/theabenedictos28/Flippix-Flashcard-Reviewer" target="_blank">GitHub</a>
+          <a class="pl" href="https://flippix.ct.ws" target="_blank">Live</a>
+        </div>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="proj-item" onclick="window.open('https://mylgu.vercel.app/','_blank')">
+      <div class="proj-left">
+        <div class="proj-name">MyLGU — Government Service Portal</div>
+        <div class="proj-desc">Local government services &amp; community resources</div>
+      </div>
+      <div class="proj-right">
+        <div class="plinks" onclick="event.stopPropagation()">
+          <a class="pl" href="https://github.com/theabenedictos28/MyLGU" target="_blank">GitHub</a>
+          <a class="pl" href="https://mylgu.vercel.app/" target="_blank">Live</a>
+        </div>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="proj-item" onclick="window.open('https://bottle.wholeecoph.com/home','_blank')">
+      <div class="proj-left">
+        <div class="proj-name">ECO Flask — Product Website</div>
+        <div class="proj-desc">Eco-friendly reusable bottle product showcase</div>
+      </div>
+      <div class="proj-right">
+        <div class="plinks" onclick="event.stopPropagation()">
+          <a class="pl" href="https://github.com/theabenedictos28/EcoFlask" target="_blank">GitHub</a>
+          <a class="pl" href="https://bottle.wholeecoph.com/home" target="_blank">Live</a>
+        </div>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="proj-item" onclick="window.open('https://kopishop.ct.ws/','_blank')">
+      <div class="proj-left">
+        <div class="proj-name">Kopi — Coffee Shop Website</div>
+        <div class="proj-desc">Menu showcase with inviting layout for customers</div>
+      </div>
+      <div class="proj-right">
+        <div class="plinks" onclick="event.stopPropagation()">
+          <a class="pl" href="https://github.com/theabenedictos28/Kopi-Coffee-Shop-Website" target="_blank">GitHub</a>
+          <a class="pl" href="https://kopishop.ct.ws/" target="_blank">Live</a>
+        </div>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <div class="proj-left">
+        <div class="proj-name">Moodly — Mood Tracker App</div>
+        <div class="proj-desc">Daily emotion logging with insights &amp; affirmations · C#, .NET MAUI</div>
+      </div>
+      <div class="proj-right">
+        <div class="plinks">
+          <a class="pl" href="https://github.com/theabenedictos28/Moodly-Mood-Tracker" target="_blank">GitHub</a>
+        </div>
+        <span class="arrow" style="color:var(--border2)">→</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── DESIGNS ── -->
+  <section>
+    <p class="label">UI/UX Designs</p>
+    <div class="designs">
+      <a class="dcard" href="https://www.figma.com/design/rh0rACTODKs9uV4LMhT6BG/Eco-Flask?m=auto&t=CfkpN3orVoiINdVq-6" target="_blank">
+        <img src="img/eco.png" alt="Eco Flask"/>
+        <div class="dcard-body"><div class="dcard-title">Eco Flask</div><div class="dcard-sub">Figma · Product UI/UX</div></div>
+      </a>
+      <a class="dcard" href="https://www.figma.com/design/3bdvgPmz18BLKbidxInxuE/C8nnect?m=auto&t=CfkpN3orVoiINdVq-6" target="_blank">
+        <img src="img/c8nnect.png" alt="C8nnect"/>
+        <div class="dcard-body"><div class="dcard-title">C8nnect</div><div class="dcard-sub">Figma · Corporate Website UI</div></div>
+      </a>
+      <a class="dcard" href="https://www.figma.com/design/Y1uONA5r8NpXypqmDrUmmw/MyLGU?m=auto&t=bXkpVdmeXHYhTwQd-6" target="_blank">
+        <img src="img/mylgu.png" alt="MyLGU"/>
+        <div class="dcard-body"><div class="dcard-title">MyLGU</div><div class="dcard-sub">Figma · Mobile &amp; Web Platform</div></div>
+      </a>
+      <a class="dcard" href="https://www.figma.com/design/ogKBc0OdGvQN5wLYyREQ4b/Moodly?m=auto&t=bXkpVdmeXHYhTwQd-6" target="_blank">
+        <img src="img/moodly.png" alt="Moodly"/>
+        <div class="dcard-body"><div class="dcard-title">Moodly</div><div class="dcard-sub">Figma · Mood Tracker App UI</div></div>
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── CERTIFICATIONS ── -->
+  <section>
+    <p class="label">Certifications &amp; Training</p>
+    <div class="cert">
+      <div>
+        <div class="cert-name">TESDA National Certification II Passer</div>
+        <div class="cert-org">TESDA · Computer System Servicing</div>
+      </div>
+      <div class="cert-date">Oct 2023</div>
+    </div>
+    <div class="cert">
+      <div>
+        <div class="cert-name">Robotics Training &amp; Workshop</div>
+        <div class="cert-org">Felta Techvoc Academy Inc. · Quezon City</div>
+      </div>
+      <div class="cert-date">Nov 2024</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── CONTACT ── -->
+  <section>
+    <p class="label">Get in Touch</p>
+    <div class="cgrid">
+      <a class="citem" href="/cdn-cgi/l/email-protection#ed8c819985888c8f88838889848e99829edcad8a808c8481c38e8280">
+        <div class="clabel">Email</div>
+        <div class="cvalue"><span class="__cf_email__" data-cfemail="8cede0f8e4e9edeee9e2e9e8e5eff8e3ffbdccebe1ede5e0a2efe3e1">[email&#160;protected]</span></div>
+      </a>
+      <a class="citem" href="tel:+639352558376">
+        <div class="clabel">Phone</div>
+        <div class="cvalue">+63 935 255 8376</div>
+      </a>
+      <div class="citem">
+        <div class="clabel">Location</div>
+        <div class="cvalue">Plaridel, Bulacan 🇵🇭</div>
+      </div>
+      <a class="citem" href="img/resume.pdf" download>
+        <div class="clabel">Resume</div>
+        <div class="cvalue">Download CV ↓</div>
+      </a>
+    </div>
+
+    <div class="socials">
+      <a class="slink" href="https://github.com/theabenedictos28" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a class="slink" href="https://www.facebook.com/teyiaaxx" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+        Facebook
+      </a>
+      <a class="slink" href="https://x.com/theabenedictos" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Twitter / X
+      </a>
+      <a class="slink" href="https://www.instagram.com/theabenedictos/" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2025 Althea Benedictos. All rights reserved.</span>
+    <span style="color:var(--muted2)">AB.dev</span>
+  </footer>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+<script>
+  (function() {
+    var saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  })();
+</script>
+<script>
+  var btn = document.getElementById('themeBtn');
+  btn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+</script>
+</body>
+</html>
