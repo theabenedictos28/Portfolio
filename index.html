@@ -25,6 +25,7 @@
       --mono:       'DM Mono', monospace;
       --tr:         background 0.25s, color 0.25s, border-color 0.25s;
       --page-px:    40px;
+      --card-w:     280px;
     }
     [data-theme="dark"] {
       --bg:         #0a0a0a;
@@ -68,7 +69,9 @@
     .f3 { animation: fadeUp 0.5s ease 0.19s both; }
     .f4 { animation: fadeUp 0.5s ease 0.26s both; }
 
-    /* HERO */
+    /* ═══════════════════════════════════
+       HERO
+    ═══════════════════════════════════ */
     .hero {
       display: grid;
       grid-template-columns: 160px 1fr;
@@ -124,15 +127,21 @@
     .divider { height: 1px; background: var(--border); margin: 40px 0; }
     .label { font-size: clamp(16px, 4vw, 18px); font-weight: 700; color: var(--text); margin-bottom: 20px; font-family: var(--serif); letter-spacing: -0.01em; }
 
-    /* ABOUT */
+    /* ═══════════════════════════════════
+       ABOUT
+    ═══════════════════════════════════ */
     .about-text { color: var(--text2); font-size: 14px; line-height: 1.85; }
     .about-text p + p { margin-top: 14px; }
     .about-text strong { color: var(--text); font-weight: 600; }
 
-    /* TWO-COL */
+    /* ═══════════════════════════════════
+       TWO-COL
+    ═══════════════════════════════════ */
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
 
-    /* TIMELINE */
+    /* ═══════════════════════════════════
+       TIMELINE
+    ═══════════════════════════════════ */
     .tl-list { display: flex; flex-direction: column; }
     .tl-item { display: flex; gap: 14px; position: relative; padding: 0 0 22px 0; }
     .tl-item:last-child { padding-bottom: 0; }
@@ -151,7 +160,9 @@
     .tl-title { color: var(--text); font-size: 12.5px; font-weight: 600; margin-bottom: 2px; line-height: 1.4; }
     .tl-sub { color: var(--muted); font-size: 11px; line-height: 1.5; }
 
-    /* STACK */
+    /* ═══════════════════════════════════
+       STACK
+    ═══════════════════════════════════ */
     .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; }
     .stack-group { margin-bottom: 18px; }
     .stack-gl { font-size: 11px; color: var(--muted); margin-bottom: 9px; font-weight: 500; letter-spacing: 0.04em; }
@@ -163,7 +174,9 @@
     }
     .tag:hover { border-color: var(--accent); color: var(--accent); background: rgba(37,99,235,0.05); }
 
-    /* PROJECTS */
+    /* ═══════════════════════════════════
+       PROJECTS
+    ═══════════════════════════════════ */
     .proj-item {
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 0; border-bottom: 1px solid var(--border);
@@ -187,178 +200,218 @@
     .pl:hover { border-color: var(--accent); color: var(--accent); }
 
     /* ═══════════════════════════════════
-       UI/UX CASE STUDY CARDS  (new section)
+       FILMSTRIP
     ═══════════════════════════════════ */
+    .filmstrip-section { position: relative; }
 
-    /* Filter bar */
-    .cs-filters {
+    .filmstrip-header {
       display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      gap: 12px;
     }
-    .cs-filter {
-      padding: 5px 13px;
-      border-radius: 20px;
+
+    .filmstrip-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .fs-counter {
+      font-size: 11px;
+      color: var(--muted);
+      font-family: var(--mono);
+      min-width: 36px;
+      text-align: center;
+    }
+
+    .fs-btn {
+      width: 32px; height: 32px;
+      border-radius: 7px;
       border: 1px solid var(--border);
       background: var(--bg2);
       color: var(--muted);
-      font-size: 11.5px;
-      font-weight: 500;
       cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
       transition: all 0.15s;
-      font-family: var(--sans);
+      font-size: 15px;
+      user-select: none;
     }
-    .cs-filter:hover { border-color: var(--border2); color: var(--text); }
-    .cs-filter.active {
-      background: var(--accent);
+    .fs-btn:hover:not(:disabled) {
       border-color: var(--accent);
-      color: #fff;
+      color: var(--accent);
+      background: rgba(37,99,235,0.06);
+    }
+    .fs-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    .filmstrip-viewport {
+      overflow: hidden;
+      border-radius: 12px;
+      position: relative;
     }
 
-    /* Card grid */
-    .cs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
-      gap: 16px;
+    .filmstrip-viewport::before,
+    .filmstrip-viewport::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 48px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .filmstrip-viewport::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg), transparent);
+    }
+    .filmstrip-viewport::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg), transparent);
     }
 
-    .cs-card {
+    .filmstrip-track {
+      display: flex;
+      gap: 14px;
+      padding: 4px 4px 12px;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+      cursor: grab;
+    }
+    .filmstrip-track.dragging { cursor: grabbing; }
+
+    .fs-card {
+      flex-shrink: 0;
+      width: var(--card-w);
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
-      background: var(--bg);
-      transition: all 0.22s ease;
+      background: var(--bg2);
       cursor: pointer;
-      display: flex;
-      flex-direction: column;
-    }
-    .cs-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 28px rgba(37,99,235,0.10);
-    }
-    .cs-card[data-hidden="true"] {
-      display: none;
-    }
-
-    /* Thumbnail */
-    .cs-thumb {
-      width: 100%;
-      aspect-ratio: 16/10;
-      background: var(--bg3);
-      overflow: hidden;
+      transition: all 0.25s ease;
       position: relative;
     }
-    .cs-thumb img {
+
+    .fs-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(37,99,235,0.12);
+    }
+
+    .fs-card.active {
+      border-color: var(--accent);
+      box-shadow: 0 8px 28px rgba(37,99,235,0.15);
+    }
+
+    .fs-thumb {
+      width: 100%;
+      aspect-ratio: 16/10;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg3);
+    }
+
+    .fs-thumb img {
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
       transition: transform 0.4s ease;
     }
-    .cs-card:hover .cs-thumb img { transform: scale(1.04); }
 
-    .cs-thumb-overlay {
+    .fs-card:hover .fs-thumb img { transform: scale(1.04); }
+
+    .fs-overlay {
       position: absolute; inset: 0;
       background: rgba(37,99,235,0);
       display: flex; align-items: center; justify-content: center;
-      transition: background 0.22s;
+      transition: background 0.25s;
     }
-    .cs-card:hover .cs-thumb-overlay { background: rgba(37,99,235,0.08); }
+    .fs-card:hover .fs-overlay { background: rgba(37,99,235,0.1); }
 
-    .cs-zoom-icon {
+    .fs-expand-icon {
       opacity: 0;
       transform: scale(0.8);
-      transition: all 0.2s ease;
-      width: 38px; height: 38px;
+      transition: all 0.22s ease;
+      width: 40px; height: 40px;
       border-radius: 50%;
       background: rgba(255,255,255,0.95);
       display: flex; align-items: center; justify-content: center;
       color: var(--accent);
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-    .cs-card:hover .cs-zoom-icon { opacity: 1; transform: scale(1); }
+    .fs-card:hover .fs-expand-icon { opacity: 1; transform: scale(1); }
 
-    /* Body */
-    .cs-body {
-      padding: 14px 16px 16px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
+    .fs-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px; color: var(--muted2);
     }
+    .fs-placeholder svg { width: 28px; height: 28px; fill: currentColor; opacity: 0.4; }
+    .fs-placeholder span { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }
 
-    .cs-top {
+    .fs-body {
+      padding: 13px 15px;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 8px;
-      margin-bottom: 6px;
     }
 
-    .cs-title {
-      font-size: 13.5px;
-      font-weight: 700;
+    .fs-num {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--muted2);
+      margin-bottom: 3px;
+      letter-spacing: 0.08em;
+    }
+    .fs-title {
+      font-size: 13px;
+      font-weight: 600;
       color: var(--text);
+      margin-bottom: 2px;
       line-height: 1.3;
     }
-
-    .cs-tool-badge {
-      flex-shrink: 0;
-      font-size: 10px;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 5px;
-      background: rgba(37,99,235,0.08);
-      color: var(--accent);
-      border: 1px solid rgba(37,99,235,0.16);
-      letter-spacing: 0.02em;
-      white-space: nowrap;
-      margin-top: 1px;
-    }
-
-    .cs-problem {
-      font-size: 12px;
+    .fs-sub {
+      font-size: 10.5px;
       color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 12px;
-      flex: 1;
     }
 
-    .cs-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .cs-type-tag {
-      font-size: 10px;
-      color: var(--muted2);
-      font-weight: 500;
+    .fs-badge {
+      flex-shrink: 0;
+      font-size: 9.5px;
       padding: 3px 8px;
       border-radius: 4px;
-      background: var(--bg2);
-      border: 1px solid var(--border);
+      background: rgba(37,99,235,0.08);
+      color: var(--accent);
+      font-weight: 600;
+      border: 1px solid rgba(37,99,235,0.15);
+      letter-spacing: 0.03em;
+      margin-top: 2px;
     }
 
-    .cs-actions {
+    .filmstrip-dots {
       display: flex;
+      justify-content: center;
       gap: 5px;
+      margin-top: 16px;
+    }
+    .fs-dot {
+      height: 3px;
+      border-radius: 2px;
+      background: var(--border2);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      width: 20px;
+    }
+    .fs-dot.active {
+      background: var(--accent);
+      width: 32px;
     }
 
-    .cs-link {
-      font-size: 10.5px;
-      padding: 4px 9px;
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      color: var(--muted);
-      transition: all 0.15s;
-      font-weight: 500;
-      background: var(--bg2);
-    }
-    .cs-link:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* LIGHTBOX */
+    /* ═══════════════════════════════════
+       LIGHTBOX
+    ═══════════════════════════════════ */
     .lightbox {
       position: fixed; inset: 0; z-index: 9999;
       background: rgba(0,0,0,0.94);
@@ -394,7 +447,6 @@
     }
     .lb-bc-sep { color: rgba(255,255,255,0.2); font-size: 12px; }
     .lb-bc-title { color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .lb-bc-sub { color: rgba(255,255,255,0.4); font-size: 11px; white-space: nowrap; }
 
     .lb-close {
       background: rgba(255,255,255,0.08);
@@ -413,23 +465,8 @@
     }
     .lb-img-wrap img {
       width: 100%; display: block;
-      max-height: 72vh; object-fit: contain;
+      max-height: 78vh; object-fit: contain;
       transition: opacity 0.15s ease;
-    }
-
-    .lb-caption {
-      padding: 12px 16px;
-      background: rgba(0,0,0,0.5);
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .lb-caption-problem {
-      font-size: 12px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.6;
-    }
-    .lb-caption-problem strong {
-      color: rgba(255,255,255,0.8);
-      font-weight: 500;
     }
 
     .lb-watermark {
@@ -438,7 +475,7 @@
     }
     .lb-watermark span {
       font-size: 13px; font-weight: 600;
-      color: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.12);
       letter-spacing: 0.18em; text-transform: uppercase;
       transform: rotate(-25deg); user-select: none; white-space: nowrap;
     }
@@ -480,14 +517,26 @@
     .lb-strip-thumb.active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
     .lb-strip-thumb:hover:not(.active) { border-color: rgba(255,255,255,0.3); }
 
-    /* CERTS */
+    .lb-strip-placeholder {
+      width: 100%; height: 100%;
+      background: #1a1a1a;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.15); font-size: 9px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+
+    /* ═══════════════════════════════════
+       CERTS
+    ═══════════════════════════════════ */
     .cert { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); }
     .cert:first-child { border-top: 1px solid var(--border); }
     .cert-name { color: var(--text); font-size: 13.5px; font-weight: 600; margin-bottom: 3px; }
     .cert-org { color: var(--muted); font-size: 11.5px; }
     .cert-date { color: var(--muted2); font-size: 11px; white-space: nowrap; }
 
-    /* CONTACT */
+    /* ═══════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════ */
     .cgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
     .citem { padding: 15px 18px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg2); transition: all 0.15s; display: block; }
     .citem:hover { border-color: var(--accent); background: rgba(37,99,235,0.04); }
@@ -501,54 +550,120 @@
 
     footer { margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; color: var(--muted2); font-size: 11px; flex-wrap: wrap; gap: 8px; }
 
-    /* RESPONSIVE */
+    /* ═══════════════════════════════════════════════════════
+       RESPONSIVE — Tablet: 700–900px
+    ═══════════════════════════════════════════════════════ */
     @media (max-width: 900px) {
       :root { --page-px: 28px; }
       .lb-prev { left: -46px; }
       .lb-next { right: -46px; }
     }
 
+    /* ═══════════════════════════════════════════════════════
+       RESPONSIVE — Mobile: ≤700px
+    ═══════════════════════════════════════════════════════ */
     @media (max-width: 700px) {
-      :root { --page-px: 18px; }
+      :root {
+        --page-px: 18px;
+        --card-w: 230px;
+      }
       body { font-size: 13px; }
+
       .page { padding: 32px var(--page-px) 80px; }
       .divider { margin: 28px 0; }
-      .hero { grid-template-columns: 1fr; gap: 20px; align-items: flex-start; }
-      .hero-info { width: 100%; padding-top: 0; }
-      .avatar { width: 88px; height: 88px; border-radius: 50%; }
-      .hero { display: flex; flex-direction: column; }
-      .hero-top-row { display: flex; align-items: center; gap: 16px; width: 100%; }
+
+      /* Hero — stack vertically */
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      .hero-info {
+        width: 100%;
+        padding-top: 0;
+      }
+
+      .avatar {
+        width: 88px; height: 88px;
+        border-radius: 50%;
+      }
+
+      /* On mobile, show avatar + name-row side by side */
+      .hero {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hero-top-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+      }
+
       .hero-name-row { margin-bottom: 8px; }
       .hero-name { font-size: clamp(20px, 6vw, 26px); }
       .hero-role { font-size: 13px; margin-bottom: 14px; }
+
       .cta { gap: 8px; }
       .btn { padding: 8px 14px; font-size: 11.5px; }
       .btn-ghost { padding: 8px 4px; }
-      .two-col { grid-template-columns: 1fr; gap: 28px; }
+
+      /* Two column → single column */
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      /* Projects */
       .proj-name { font-size: 13px; }
       .proj-desc { font-size: 11px; }
-      .plinks { display: none; }
+      .plinks { display: none; } /* hide on mobile, row is still tappable */
       .proj-item:hover { margin: 0 -8px; padding: 14px 8px; }
-      .cs-grid { grid-template-columns: 1fr; }
+
+      /* Filmstrip */
+      .filmstrip-viewport::before,
+      .filmstrip-viewport::after { width: 24px; }
+
+      .fs-card:hover { transform: none; } /* avoid jank on touch */
+
+      /* Lightbox */
       .lightbox { padding: 12px; }
       .lb-inner { max-width: 100%; }
-      .lb-img-wrap img { max-height: 55vh; }
+
+      .lb-img-wrap img { max-height: 60vh; }
+
       .lb-prev { left: 4px; background: rgba(0,0,0,0.55); border-color: rgba(255,255,255,0.15); }
       .lb-next { right: 4px; background: rgba(0,0,0,0.55); border-color: rgba(255,255,255,0.15); }
       .lb-nav { width: 36px; height: 36px; font-size: 18px; border-radius: 8px; }
+
       .lb-strip-thumb { width: 52px; height: 34px; }
+
+      /* Certs */
       .cert { grid-template-columns: 1fr; gap: 4px; }
       .cert-date { font-size: 10.5px; color: var(--muted); }
+
+      /* Contact grid */
       .cgrid { grid-template-columns: 1fr; gap: 8px; }
       .citem { padding: 13px 15px; }
       .cvalue { font-size: 12px; word-break: break-all; }
+
+      /* Socials */
       .socials { gap: 6px; }
       .slink { font-size: 11px; padding: 6px 11px; }
+
+      /* Footer */
       footer { flex-direction: column; align-items: flex-start; gap: 4px; }
+
       .label { margin-bottom: 16px; }
     }
 
+    /* ═══════════════════════════════════════════════════════
+       RESPONSIVE — Extra small: ≤400px
+    ═══════════════════════════════════════════════════════ */
     @media (max-width: 400px) {
+      :root { --card-w: 200px; }
       .hero-name { font-size: 20px; }
       .btn { padding: 7px 11px; font-size: 11px; }
       .btn svg { display: none; }
@@ -560,6 +675,7 @@
 
   <!-- HERO -->
   <div class="hero f1" id="heroSection">
+    <!-- Mobile rearranges this via JS below; desktop uses grid -->
     <div class="avatar">
       <img src="img/profile.jpg" alt="Althea Benedictos"
         onerror="this.src='https://ui-avatars.com/api/?name=Althea+Benedictos&background=2563eb&color=fff&size=400'"/>
@@ -777,188 +893,129 @@
 
   <div class="divider"></div>
 
-  <!-- ═══════════════════════════════════
-       UI/UX DESIGNS — CASE STUDY CARDS
-  ═══════════════════════════════════ -->
-  <section id="designs">
-    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+  <!-- UI/UX DESIGNS FILMSTRIP -->
+  <section class="filmstrip-section">
+    <div class="filmstrip-header">
       <p class="label" style="margin-bottom:0">UI/UX Designs</p>
-      <span style="font-size:11px;color:var(--muted);font-family:var(--mono)" id="csCount">7 designs</span>
+      <div class="filmstrip-controls">
+        <span class="fs-counter" id="fsCounter">1 / 7</span>
+        <button class="fs-btn" id="fsPrev" aria-label="Previous" disabled>‹</button>
+        <button class="fs-btn" id="fsNext" aria-label="Next">›</button>
+      </div>
     </div>
 
-    <!-- Filter pills -->
-    <div class="cs-filters" id="csFilters">
-      <button class="cs-filter active" data-filter="all">All</button>
-      <button class="cs-filter" data-filter="Web">Web</button>
-      <button class="cs-filter" data-filter="Mobile">Mobile</button>
-      <button class="cs-filter" data-filter="Dashboard">Dashboard</button>
-      <button class="cs-filter" data-filter="Product">Product</button>
-    </div>
+    <div class="filmstrip-viewport" id="fsViewport">
+      <div class="filmstrip-track" id="fsTrack">
 
-    <!-- Card grid -->
-    <div class="cs-grid" id="csGrid">
+        <div class="fs-card" onclick="openLb(0)" data-index="0">
+          <div class="fs-thumb">
+            <img src="img/eco.png" alt="Eco Flask" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">01 / 07</div>
+              <div class="fs-title">Eco Flask</div>
+              <div class="fs-sub">Product UI/UX</div>
+            </div>
+            <span class="fs-badge">Figma</span>
+          </div>
+        </div>
 
-      <div class="cs-card" data-index="0" data-type="Product" onclick="openLb(0)">
-        <div class="cs-thumb">
-          <img src="img/eco.png" alt="Eco Flask" onerror="this.style.display='none'"/>
-          <div class="cs-thumb-overlay">
-            <div class="cs-zoom-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <div class="fs-card" onclick="openLb(1)" data-index="1">
+          <div class="fs-thumb">
+            <img src="img/c8nnect.png" alt="C8nnect About Page" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">02 / 07</div>
+              <div class="fs-title">C8nnect</div>
+              <div class="fs-sub">Corporate About Page</div>
             </div>
+            <span class="fs-badge">Figma</span>
           </div>
         </div>
-        <div class="cs-body">
-          <div class="cs-top">
-            <div class="cs-title">Eco Flask</div>
-            <span class="cs-tool-badge">Figma</span>
-          </div>
-          <p class="cs-problem">Designed a clean product landing page for an eco-friendly bottle brand, focusing on visual storytelling and conversion-oriented layout.</p>
-          <div class="cs-footer">
-            <span class="cs-type-tag">Product</span>
-            <div class="cs-actions" onclick="event.stopPropagation()">
-              <a class="cs-link" href="https://bottle.wholeecoph.com/home" target="_blank">Live ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="cs-card" data-index="1" data-type="Web" onclick="openLb(1)">
-        <div class="cs-thumb">
-          <img src="img/c8nnect.png" alt="C8nnect" onerror="this.style.display='none'"/>
-          <div class="cs-thumb-overlay">
-            <div class="cs-zoom-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <div class="fs-card" onclick="openLb(2)" data-index="2">
+          <div class="fs-thumb">
+            <img src="img/mylgu.png" alt="MyLGU" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">03 / 07</div>
+              <div class="fs-title">MyLGU</div>
+              <div class="fs-sub">Mobile &amp; Web Platform</div>
             </div>
+            <span class="fs-badge">Figma</span>
           </div>
         </div>
-        <div class="cs-body">
-          <div class="cs-top">
-            <div class="cs-title">C8nnect</div>
-            <span class="cs-tool-badge">Figma</span>
-          </div>
-          <p class="cs-problem">Corporate About page design for a tech company — built around trust signals, team culture, and a clear brand voice to connect with potential clients.</p>
-          <div class="cs-footer">
-            <span class="cs-type-tag">Web</span>
-            <div class="cs-actions"></div>
-          </div>
-        </div>
-      </div>
 
-      <div class="cs-card" data-index="2" data-type="Mobile" onclick="openLb(2)">
-        <div class="cs-thumb">
-          <img src="img/mylgu.png" alt="MyLGU" onerror="this.style.display='none'"/>
-          <div class="cs-thumb-overlay">
-            <div class="cs-zoom-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <div class="fs-card" onclick="openLb(3)" data-index="3">
+          <div class="fs-thumb">
+            <img src="img/moodly.png" alt="Moodly" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">04 / 07</div>
+              <div class="fs-title">Moodly</div>
+              <div class="fs-sub">Mood Tracker App UI</div>
             </div>
+            <span class="fs-badge">Figma</span>
           </div>
         </div>
-        <div class="cs-body">
-          <div class="cs-top">
-            <div class="cs-title">MyLGU</div>
-            <span class="cs-tool-badge">Figma</span>
-          </div>
-          <p class="cs-problem">Redesigned local government service access into a unified mobile + web platform, making barangay services easier to find and request.</p>
-          <div class="cs-footer">
-            <span class="cs-type-tag">Mobile · Web</span>
-            <div class="cs-actions" onclick="event.stopPropagation()">
-              <a class="cs-link" href="https://mylgu.vercel.app/" target="_blank">Live ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="cs-card" data-index="3" data-type="Mobile" onclick="openLb(3)">
-        <div class="cs-thumb">
-          <img src="img/moodly.png" alt="Moodly" onerror="this.style.display='none'"/>
-          <div class="cs-thumb-overlay">
-            <div class="cs-zoom-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <div class="fs-card" onclick="openLb(4)" data-index="4">
+          <div class="fs-thumb">
+            <img src="img/hris.png" alt="HRIS" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">05 / 07</div>
+              <div class="fs-title">HRIS</div>
+              <div class="fs-sub">HR Information System</div>
             </div>
+            <span class="fs-badge">Figma</span>
           </div>
         </div>
-        <div class="cs-body">
-          <div class="cs-top">
-            <div class="cs-title">Moodly</div>
-            <span class="cs-tool-badge">Figma</span>
-          </div>
-          <p class="cs-problem">Designed a calming, emotionally intuitive UI for a daily mood tracker app — focused on low-friction logging and motivational feedback loops.</p>
-          <div class="cs-footer">
-            <span class="cs-type-tag">Mobile</span>
-            <div class="cs-actions" onclick="event.stopPropagation()">
-              <a class="cs-link" href="https://github.com/theabenedictos28/Moodly-Mood-Tracker" target="_blank">GitHub ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="cs-card" data-index="4" data-type="Dashboard" onclick="openLb(4)">
-        <div class="cs-thumb">
-          <img src="img/hris.png" alt="HRIS" onerror="this.style.display='none'"/>
-          <div class="cs-thumb-overlay">
-            <div class="cs-zoom-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <div class="fs-card" onclick="openLb(5)" data-index="5">
+          <div class="fs-thumb">
+            <img src="img/lms.png" alt="LMS" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">06 / 07</div>
+              <div class="fs-title">LMS</div>
+              <div class="fs-sub">Learning Management System</div>
             </div>
+            <span class="fs-badge">Figma</span>
           </div>
         </div>
-        <div class="cs-body">
-          <div class="cs-top">
-            <div class="cs-title">HRIS</div>
-            <span class="cs-tool-badge">Figma</span>
-          </div>
-          <p class="cs-problem">HR Information System dashboard designed for clarity at scale — streamlining employee records, attendance, and payroll into one cohesive interface.</p>
-          <div class="cs-footer">
-            <span class="cs-type-tag">Dashboard</span>
-            <div class="cs-actions"></div>
-          </div>
-        </div>
-      </div>
 
-      <div class="cs-card" data-index="5" data-type="Dashboard" onclick="openLb(5)">
-        <div class="cs-thumb">
-          <img src="img/lms.png" alt="LMS" onerror="this.style.display='none'"/>
-          <div class="cs-thumb-overlay">
-            <div class="cs-zoom-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <div class="fs-card" onclick="openLb(6)" data-index="6">
+          <div class="fs-thumb">
+            <img src="img/construction.png" alt="Construction System" onerror="this.style.display='none'"/>
+            <div class="fs-overlay"><div class="fs-expand-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div></div>
+          </div>
+          <div class="fs-body">
+            <div class="fs-info">
+              <div class="fs-num">07 / 07</div>
+              <div class="fs-title">Construction System</div>
+              <div class="fs-sub">Project Management UI</div>
             </div>
+            <span class="fs-badge">Figma</span>
           </div>
         </div>
-        <div class="cs-body">
-          <div class="cs-top">
-            <div class="cs-title">LMS</div>
-            <span class="cs-tool-badge">Figma</span>
-          </div>
-          <p class="cs-problem">Learning Management System UI designed for students and instructors — clear course navigation, progress tracking, and distraction-free content layout.</p>
-          <div class="cs-footer">
-            <span class="cs-type-tag">Dashboard</span>
-            <div class="cs-actions"></div>
-          </div>
-        </div>
-      </div>
 
-      <div class="cs-card" data-index="6" data-type="Dashboard" onclick="openLb(6)">
-        <div class="cs-thumb">
-          <img src="img/construction.png" alt="Construction System" onerror="this.style.display='none'"/>
-          <div class="cs-thumb-overlay">
-            <div class="cs-zoom-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-            </div>
-          </div>
-        </div>
-        <div class="cs-body">
-          <div class="cs-top">
-            <div class="cs-title">Construction System</div>
-            <span class="cs-tool-badge">Figma</span>
-          </div>
-          <p class="cs-problem">Project management UI for a construction firm — designed for field supervisors and admins to track tasks, timelines, and site progress in real time.</p>
-          <div class="cs-footer">
-            <span class="cs-type-tag">Dashboard</span>
-            <div class="cs-actions"></div>
-          </div>
-        </div>
-      </div>
+      </div><!-- /track -->
+    </div><!-- /viewport -->
 
-    </div><!-- /cs-grid -->
+    <div class="filmstrip-dots" id="fsDots"></div>
   </section>
 
   <!-- LIGHTBOX -->
@@ -969,8 +1026,6 @@
           <span class="lb-bc-num" id="lbNum"></span>
           <span class="lb-bc-sep">/</span>
           <span class="lb-bc-title" id="lbTitleTop"></span>
-          <span class="lb-bc-sep">·</span>
-          <span class="lb-bc-sub" id="lbSubTop"></span>
         </div>
         <button class="lb-close" onclick="closeLb()" aria-label="Close">✕</button>
       </div>
@@ -978,9 +1033,6 @@
       <div class="lb-img-wrap">
         <img id="lbImg" src="" alt=""/>
         <div class="lb-watermark"><span>© Althea Benedictos</span></div>
-        <div class="lb-caption">
-          <p class="lb-caption-problem" id="lbCaption"></p>
-        </div>
       </div>
 
       <button class="lb-nav lb-prev" onclick="lbStep(-1)" aria-label="Previous">‹</button>
@@ -1061,7 +1113,7 @@
 </div><!-- /page -->
 
 <script>
-  /* THEME */
+  /* ── THEME ── */
   (function() {
     var saved = localStorage.getItem('theme');
     if (saved) document.documentElement.setAttribute('data-theme', saved);
@@ -1072,66 +1124,141 @@
     localStorage.setItem('theme', next);
   });
 
-  /* MOBILE HERO */
+  /* ── MOBILE HERO: place avatar inline with name ── */
   function rearrangeHero() {
     var hero = document.getElementById('heroSection');
     var avatar = hero.querySelector('.avatar');
     var heroInfo = hero.querySelector('.hero-info');
     var nameRow = heroInfo.querySelector('.hero-name-row');
     var isMobile = window.innerWidth <= 700;
+
     if (isMobile) {
       hero.style.flexDirection = 'column';
+      // Wrap avatar + nameRow in a flex row if not already done
       if (!document.getElementById('mobileTopRow')) {
         var topRow = document.createElement('div');
         topRow.id = 'mobileTopRow';
         topRow.style.cssText = 'display:flex;align-items:center;gap:16px;width:100%';
+        // Move avatar into topRow
         hero.insertBefore(topRow, heroInfo);
         topRow.appendChild(avatar);
+        // Move nameRow into topRow
         topRow.appendChild(nameRow);
       }
     } else {
+      // Restore desktop layout
       var topRow = document.getElementById('mobileTopRow');
       if (topRow) {
         var nameRow = topRow.querySelector('.hero-name-row');
         var avatar = topRow.querySelector('.avatar');
+        // Put avatar back as first child of hero
         hero.insertBefore(avatar, hero.firstChild);
+        // Put nameRow back as first child of heroInfo
         heroInfo.insertBefore(nameRow, heroInfo.firstChild);
         topRow.remove();
       }
     }
   }
+
   rearrangeHero();
   window.addEventListener('resize', rearrangeHero);
 
-  /* ── DESIGNS DATA ── */
+  /* ── FILMSTRIP ── */
   var designs = [
-    { src: 'img/eco.png',           title: 'Eco Flask',           sub: 'Product UI/UX',              problem: '<strong>Challenge:</strong> Create a product landing page that communicates eco values while driving conversions for a reusable bottle brand.' },
-    { src: 'img/c8nnect.png',       title: 'C8nnect',             sub: 'Corporate About Page',        problem: '<strong>Challenge:</strong> Design a corporate About page that builds trust and communicates company culture clearly to potential partners.' },
-    { src: 'img/mylgu.png',         title: 'MyLGU',               sub: 'Mobile & Web Platform',      problem: '<strong>Challenge:</strong> Make barangay government services accessible to residents with varying levels of tech literacy, on both mobile and web.' },
-    { src: 'img/moodly.png',        title: 'Moodly',              sub: 'Mood Tracker App UI',         problem: '<strong>Challenge:</strong> Design a low-friction daily mood logging experience that feels calming and encourages consistent use.' },
-    { src: 'img/hris.png',          title: 'HRIS',                sub: 'HR Information System',       problem: '<strong>Challenge:</strong> Consolidate employee records, attendance, and payroll into a single dashboard that HR teams can navigate quickly.' },
-    { src: 'img/lms.png',           title: 'LMS',                 sub: 'Learning Management System',  problem: '<strong>Challenge:</strong> Design a distraction-free LMS interface for both students and instructors, with clear course progression and content hierarchy.' },
-    { src: 'img/construction.png',  title: 'Construction System', sub: 'Project Management UI',       problem: '<strong>Challenge:</strong> Build a project management interface for field supervisors to track tasks, deadlines, and site progress on-the-go.' },
+    { src: 'img/eco.png',           title: 'Eco Flask',           sub: 'Product UI/UX' },
+    { src: 'img/c8nnect.png',       title: 'C8nnect',             sub: 'Corporate About Page' },
+    { src: 'img/mylgu.png',         title: 'MyLGU',               sub: 'Mobile & Web Platform' },
+    { src: 'img/moodly.png',        title: 'Moodly',              sub: 'Mood Tracker App UI' },
+    { src: 'img/hris.png',          title: 'HRIS',                sub: 'HR Information System' },
+    { src: 'img/lms.png',           title: 'LMS',                 sub: 'Learning Management System' },
+    { src: 'img/construction.png',  title: 'Construction System', sub: 'Project Management UI' },
   ];
 
-  var total = designs.length;
+  var track    = document.getElementById('fsTrack');
+  var prevBtn  = document.getElementById('fsPrev');
+  var nextBtn  = document.getElementById('fsNext');
+  var counter  = document.getElementById('fsCounter');
+  var dotsWrap = document.getElementById('fsDots');
 
-  /* ── FILTER ── */
-  var activeFilter = 'all';
-  document.getElementById('csFilters').addEventListener('click', function(e) {
-    var btn = e.target.closest('.cs-filter');
-    if (!btn) return;
-    activeFilter = btn.getAttribute('data-filter');
-    document.querySelectorAll('.cs-filter').forEach(function(b){ b.classList.toggle('active', b === btn); });
-    var cards = document.querySelectorAll('.cs-card');
-    var visible = 0;
-    cards.forEach(function(c){
-      var type = c.getAttribute('data-type');
-      var show = activeFilter === 'all' || type === activeFilter || (activeFilter === 'Mobile' && type === 'Mobile');
-      c.setAttribute('data-hidden', show ? 'false' : 'true');
-      if (show) visible++;
-    });
-    document.getElementById('csCount').textContent = visible + ' design' + (visible !== 1 ? 's' : '');
+  var current = 0;
+  var total   = designs.length;
+
+  function getCardW() {
+    var card = track.querySelector('.fs-card');
+    if (!card) return 294;
+    return card.offsetWidth + 14; // card + gap
+  }
+
+  // Build dots
+  for (var i = 0; i < total; i++) {
+    var dot = document.createElement('div');
+    dot.className = 'fs-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('data-i', i);
+    dot.addEventListener('click', (function(idx){ return function(){ fsGo(idx); }; })(i));
+    dotsWrap.appendChild(dot);
+  }
+
+  function fsUpdateDots() {
+    var dots = dotsWrap.querySelectorAll('.fs-dot');
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+  }
+
+  function fsUpdateButtons() {
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+    counter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  function fsGo(idx) {
+    current = Math.max(0, Math.min(total - 1, idx));
+    track.style.transform = 'translateX(-' + (current * getCardW()) + 'px)';
+    fsUpdateDots();
+    fsUpdateButtons();
+    var cards = track.querySelectorAll('.fs-card');
+    cards.forEach(function(c, i){ c.classList.toggle('active', i === current); });
+  }
+
+  prevBtn.addEventListener('click', function(){ fsGo(current - 1); });
+  nextBtn.addEventListener('click', function(){ fsGo(current + 1); });
+  fsUpdateButtons();
+
+  // Recalc on resize
+  window.addEventListener('resize', function(){ fsGo(current); });
+
+  // Drag
+  var dragStart = null, dragStartX = 0;
+  track.addEventListener('mousedown', function(e) {
+    dragStart = current; dragStartX = e.clientX;
+    track.classList.add('dragging');
+  });
+  window.addEventListener('mousemove', function(e) {
+    if (dragStart === null) return;
+    var offset = dragStart * getCardW() - (e.clientX - dragStartX);
+    track.style.transition = 'none';
+    track.style.transform = 'translateX(-' + offset + 'px)';
+  });
+  window.addEventListener('mouseup', function(e) {
+    if (dragStart === null) return;
+    track.style.transition = '';
+    track.classList.remove('dragging');
+    var moved = dragStartX - e.clientX;
+    fsGo(Math.abs(moved) > 60 ? dragStart + (moved > 0 ? 1 : -1) : dragStart);
+    dragStart = null;
+  });
+
+  // Touch
+  var touchStartX = 0;
+  track.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', function(e){
+    var diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) fsGo(current + (diff > 0 ? 1 : -1));
+  }, { passive: true });
+
+  // Keyboard
+  document.addEventListener('keydown', function(e) {
+    if (document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') fsGo(current - 1);
+    if (e.key === 'ArrowRight') fsGo(current + 1);
   });
 
   /* ── LIGHTBOX ── */
@@ -1143,7 +1270,7 @@
     designs.forEach(function(d, i) {
       var thumb = document.createElement('div');
       thumb.className = 'lb-strip-thumb' + (i === lbIdx ? ' active' : '');
-      thumb.innerHTML = '<img src="' + d.src + '" alt="' + d.title + '" onerror="this.parentElement.style.background=\'#1a1a1a\'">';
+      thumb.innerHTML = '<img src="' + d.src + '" alt="' + d.title + '" onerror="this.parentElement.innerHTML=\'<div class=lb-strip-placeholder>' + (i+1) + '</div>\'">';
       thumb.addEventListener('click', function(){ lbGo(i); });
       strip.appendChild(thumb);
     });
@@ -1158,8 +1285,6 @@
       img.src = d.src; img.alt = d.title;
       document.getElementById('lbNum').textContent = String(lbIdx+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
       document.getElementById('lbTitleTop').textContent = d.title;
-      document.getElementById('lbSubTop').textContent = d.sub;
-      document.getElementById('lbCaption').innerHTML = d.problem;
       img.style.opacity = '1';
     }, 100);
     buildLbStrip();
@@ -1175,14 +1300,12 @@
     var d = designs[i];
     var img = document.getElementById('lbImg');
     img.src = d.src; img.alt = d.title;
-    img.style.transition = 'opacity 0.12s ease';
     document.getElementById('lbNum').textContent = String(i+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
     document.getElementById('lbTitleTop').textContent = d.title;
-    document.getElementById('lbSubTop').textContent = d.sub;
-    document.getElementById('lbCaption').innerHTML = d.problem;
     buildLbStrip();
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
+    img.style.transition = 'opacity 0.12s ease';
   }
 
   function closeLb() {
@@ -1203,6 +1326,7 @@
     if (e.key === 'ArrowRight') lbStep(1);
   });
 
+  // Lightbox touch swipe
   var lbTouchX = 0;
   document.getElementById('lightbox').addEventListener('touchstart', function(e){ lbTouchX = e.touches[0].clientX; }, { passive: true });
   document.getElementById('lightbox').addEventListener('touchend', function(e){
